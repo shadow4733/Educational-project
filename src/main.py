@@ -1,7 +1,7 @@
 import pygame
 
 from src.utils.constants import SCREEN_WIDTH, SCREEN_HEIGHT, BLACK, FPS
-from ui.menus import MainMenu
+from src.ui.menus import MainMenu
 
 def main():
     pygame.init()
