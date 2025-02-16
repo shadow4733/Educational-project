@@ -1,5 +1,5 @@
 import pygame
-
+from sounds_game import enemy
 class Enemy:
     def __init__(self, x, y, hp, damage):
         self.rect = pygame.Rect(x, y, 50, 50)  # Прямоугольник для представления врага
@@ -17,6 +17,7 @@ class Enemy:
             self.hp -= amount
             print(f"Enemy took {amount} damage. Remaining HP: {self.hp}")
             if self.hp <= 0:
+                enemy()
                 self.alive = False
                 print("Enemy has been defeated!")
 

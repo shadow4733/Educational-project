@@ -13,3 +13,6 @@ def hit():
 def run():
     pygame.mixer.music.load("sounds/RUN.ogg")
     pygame.mixer.music.play(0, 0.0, 500)
+def enemy():
+    enemydeath = pygame.mixer.Sound("sounds/Death.MP3")
+    enemydeath.play()
