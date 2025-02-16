@@ -1,6 +1,7 @@
 import pygame
 import sys
 import enemies
+from sounds_game import bg_music
 
 # Убедитесь, что класс Character находится в этом же файле или импортирован корректно
 from character import Character  # Импортируем класс Character
@@ -14,6 +15,8 @@ def main_menu():
     pygame.display.set_caption("GAME")
     font = pygame.font.Font(None, 74)  # Шрифт для текста
     bg_color = (0, 0, 0)  # Цвет фона
+
+
 
     while True:
         screen.fill(bg_color)
@@ -34,6 +37,7 @@ def main_menu():
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:  # Нажатие клавиши Enter
+
                     return  # Переход к игре
                 if event.key == pygame.K_ESCAPE:  # Нажатие клавиши Escape
                     pygame.quit()
@@ -41,7 +45,7 @@ def main_menu():
 
 def run():
     pygame.init()
-#kfkf
+
     screen_info = pygame.display.Info()
     screen_width = screen_info.current_w  # Ширина экрана
     screen_height = screen_info.current_h  # Высота экрана
@@ -58,6 +62,11 @@ def run():
     enemies_list = [enemies.Enemy(1200, 750, 100, 10)]  # Список врагов
 
     clock = pygame.time.Clock()  # Создаем объект Clock для отслеживания времени
+
+    #Запуск музыки
+    bg_music()
+
+
 
     while True:
         delta_time = clock.tick(240) / 1000.0  # Устанавливаем FPS и получаем время в секундах

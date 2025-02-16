@@ -1,8 +1,16 @@
 import pygame
 import math
 
+from pygame import KEYUP
+
+from sounds_game import jump
+from sounds_game import hit
+from sounds_game import run
+
 class Character:
     def __init__(self, screen):
+
+
         self.screen = screen
         self.image = pygame.Surface((30, 50))  # Создание поверхности для персонажа
         self.image.fill((0, 255, 0))  # Заливка красным цветом для видимости
@@ -26,11 +34,14 @@ class Character:
 
     def move(self, keys, delta_time, area_rect, enemies):
         speed = 200 * delta_time  # Устанавливаем скорость, умноженную на delta_time для плавности
+        key_a_pressed = False
+        key_d_pressed = False
 
         # Управление прыжком
         if keys[pygame.K_SPACE] and not self.is_jumping:  # Прыжок при нажатии пробела
             self.is_jumping = True
             self.velocity_y = self.jump_strength
+            jump()
 
         # Применение гравитации
         if self.is_jumping:
@@ -46,8 +57,13 @@ class Character:
         # Движение влево и вправо
         if keys[pygame.K_a]:  # Движение влево
             self.rect.x -= speed
+
+
         if keys[pygame.K_d]:  # Движение вправо
             self.rect.x += speed
+
+
+
 
         # Атака при нажатии левой кнопки мыши
         mouse_buttons = pygame.mouse.get_pressed()
@@ -55,6 +71,7 @@ class Character:
             self.is_attacking = True
             self.attack_timer = self.attack_duration  # Сбрасываем таймер атаки
             self.attack(enemies)  # Вызываем метод атаки и передаем список врагов
+            hit()
 
         # Обновляем таймер атаки
         if self.is_attacking:
