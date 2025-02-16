@@ -41,7 +41,7 @@ def main_menu():
 
 def run():
     pygame.init()
-#ляляля
+
     screen_info = pygame.display.Info()
     screen_width = screen_info.current_w  # Ширина экрана
     screen_height = screen_info.current_h  # Высота экрана
