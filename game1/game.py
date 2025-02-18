@@ -2,6 +2,8 @@ import pygame
 import sys
 import enemies
 from sounds_game import bg_music
+# from enemies import Enemy
+
 
 # Убедитесь, что класс Character находится в этом же файле или импортирован корректно
 from character import Character  # Импортируем класс Character
@@ -43,6 +45,28 @@ def main_menu():
                     pygame.quit()
                     sys.exit()
 
+# class Room:
+#     def __init__(self, name, enemies, doors, font):
+#         self.name = name
+#         self.enemies = enemies
+#         self.doors = doors  # Список дверей
+#         self.font = font
+#
+#     def draw(self, screen):
+#         screen.fill((0, 0, 0))
+#         title_text = self.font.render(f"Комната: {self.name}", True, WHITE)
+#         screen.blit(title_text, (800, 50))
+#         for door in self.doors:  # Отрисовка дверей
+#             door.draw(screen)
+
+class Door:
+    def __init__(self, x, y, width, height, target_room_index):
+        self.rect = pygame.Rect(x, y, width, height)
+        self.target_room_index = target_room_index
+
+    def draw(self, screen):
+        pygame.draw.rect(screen, (255, 255, 0), self.rect)  # Цвет двери (желтый)
+
 def run():
     pygame.init()
 
@@ -54,6 +78,18 @@ def run():
     pygame.display.set_caption("GAME")
     bg_color = (0, 0, 0)
     player = Character(screen)
+
+    # font = pygame.font.Font(None, 74)
+    #
+    # rooms = [
+    #     Room("A", [Enemy(1200, 750, 100, 10)], [Door(950, 300, 50, 100, 1)], font),  # Дверь в комнату B
+    #     Room("B", [Enemy(1200, 750, 100, 10)], [Door(50, 300, 50, 100, 0)], font),  # Дверь в комнату A
+    #     Room("C", [], [Door(950, 300, 50, 100, 1)], font),  # Дверь в комнату D
+    #     Room("D", [], [Door(50, 300, 50, 100, 2)], font)  # Дверь в комнату C
+    #     # Добавьте другие комнаты и двери по аналогии
+    # ]
+    #
+    # current_room_index = 0  # Индекс текущей комнаты
 
     area_color = (255, 255, 255)  # Белый цвет
     area_rect = pygame.Rect(0, 300, screen_width, 500)  # Параметры области (x, y, ширина, высота)
@@ -77,6 +113,22 @@ def run():
             if event.type == pygame.QUIT or keys[pygame.K_ESCAPE]:
                 pygame.quit()
                 sys.exit()
+        #
+        #
+        #     # Переход между комнатами
+        #     if event.type == pygame.KEYDOWN:
+        #         if event.key == pygame.K_RIGHT:  # Перейти в следующую комнату
+        #             current_room_index = (current_room_index + 1) % len(rooms)
+        #         if event.key == pygame.K_LEFT:  # Вернуться в предыдущую комнату
+        #             current_room_index = (current_room_index - 1) % len(rooms)
+        #
+        #     # Управление движением персонажа
+        # player.move(keys, delta_time, pygame.Rect(0, 300, screen_width, 500), rooms[current_room_index].enemies)
+        #
+        # screen.fill(bg_color)
+        # # Отобразить текущую комнату
+        # rooms[current_room_index].draw(screen)
+        # player.output(rooms[current_room_index].enemies)
 
         # Управление движением персонажа
         player.move(keys, delta_time, area_rect, enemies_list)  # Передаем список врагов
