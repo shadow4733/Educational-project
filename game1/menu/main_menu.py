@@ -3,6 +3,7 @@ import sys
 
 from game1.constant.constnants import WIDTH, HEIGHT, GRAY, WHITE, BLACK, GREEN, SCREEN
 from game1.levels import level_1
+from game1.levels import level_2
 
 pygame.init()
 
@@ -80,6 +81,8 @@ def main():
         elif menu_state == "game":
             if selected_level == "Уровень 1":
                 level_1.start_level()
+            elif selected_level == "Уровень 2":
+                level_2.start_level()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:  # Обработка выхода из игры

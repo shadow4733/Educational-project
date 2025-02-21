@@ -1,12 +1,12 @@
 import pygame
 
 # Экран
-WIDTH = 1600
-HEIGHT = 1080
 HEALTH = 100
 SCORE = 0
 SCORE_TIMER = 0
-SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
+SCREEN = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+WIDTH = pygame.display.Info().current_w
+HEIGHT = pygame.display.Info().current_h
 
 # ФПС
 FPS = 60
@@ -22,6 +22,6 @@ LIGHT_PINK = (255,204,204)
 
 # Герой
 HERO_COLOR = (0, 255, 0)
-HERO_SIZE = 50
+HERO_SIZE = 30
 
 

@@ -49,19 +49,19 @@ def start_level():
                     waiting = False
 
                 # Если нажата одна из стрелок, скрываем текст и показываем информацию
-                if event.key in [pygame.K_LEFT, pygame.K_RIGHT, pygame.K_UP, pygame.K_DOWN]:
+                if event.key in [pygame.K_LEFT, pygame.K_a, pygame.K_RIGHT, pygame.K_d, pygame.K_UP, pygame.K_w,  pygame.K_DOWN, pygame.K_s]:
                     text_shown = False
                     info_shown = True
 
         # Обработка перемещения героя
         keys = pygame.key.get_pressed()  # Получаем состояние клавиш
-        if keys[pygame.K_LEFT]:  # Перемещение влево
+        if keys[pygame.K_LEFT] or keys[pygame.K_a]:  # Перемещение влево
             hero_x -= 5
-        if keys[pygame.K_RIGHT]:  # Перемещение вправо
+        if keys[pygame.K_RIGHT] or keys[pygame.K_d]:  # Перемещение вправо
             hero_x += 5
-        if keys[pygame.K_UP]:  # Перемещение вверх
+        if keys[pygame.K_UP] or keys[pygame.K_w]:  # Перемещение вверх
             hero_y -= 5
-        if keys[pygame.K_DOWN]:  # Перемещение вниз
+        if keys[pygame.K_DOWN] or keys[pygame.K_s]:  # Перемещение вниз
             hero_y += 5
 
         # Ограничение движения героя внутри экрана
