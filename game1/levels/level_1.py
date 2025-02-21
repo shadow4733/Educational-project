@@ -1,7 +1,7 @@
 import pygame
 import sys
 from game1.constant.constnants import *
-from game1.levels.tutorial import show_instructions, show_info  # Импортируем новые функции
+from game1.levels.tutorial import show_instructions  # Импортируем новые функции
 
 pygame.init()
 
@@ -83,10 +83,6 @@ def start_level():
         if text_shown:
             # Показываем инструкции, если флаг text_shown == True
             show_instructions(SCREEN, font)  # Используем функцию из tutorial.py
-
-        if info_shown:
-            # После того как игрок начал двигаться, показываем информацию о местоположении
-            show_info(SCREEN, font)  # Используем функцию из tutorial.py
 
         pygame.draw.rect(SCREEN, HERO_COLOR, (hero_x, hero_y, HERO_SIZE, HERO_SIZE))  # Перерисовываем героя
 
