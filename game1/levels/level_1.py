@@ -117,6 +117,7 @@ def start_level():
         # Таймер для начисления очков
         score_timer += 1
         if score_timer >= 60:  # 1 секунда (60 кадров)
+            score_timer = 0
             score += 10  # Начисляем очки
 
         # Рисуем героя
