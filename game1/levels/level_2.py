@@ -117,14 +117,14 @@ def start_level():
                 player.rect.centery += 5
 
             # Ограничение движения героя внутри игровой области
-            if player.rect.centerx < WIDTH//2-245:
-                player.rect.centerx = WIDTH//2-245
-            elif player.rect.centerx + HERO_SIZE > WIDTH//2+245:
-                player.rect.centerx = WIDTH//2+245 - HERO_SIZE
-            if player.rect.centery < HEIGHT//2+5:
-                player.rect.centery = HEIGHT//2+5
-            elif player.rect.centery + HERO_SIZE > HEIGHT//2+495:
-                player.rect.centery = HEIGHT//2+495 - HERO_SIZE
+            if player.rect.centerx - HERO_SIZE // 2 < WIDTH//2-245:
+                player.rect.centerx = WIDTH//2-245 + HERO_SIZE // 2
+            elif player.rect.centerx + HERO_SIZE // 2 > WIDTH//2+245:
+                player.rect.centerx = WIDTH//2+245 - HERO_SIZE // 2
+            if player.rect.centery - HERO_SIZE // 2 < HEIGHT//2+5:
+                player.rect.centery = HEIGHT//2+5 + HERO_SIZE // 2
+            elif player.rect.centery + HERO_SIZE // 2 > HEIGHT//2+495:
+                player.rect.centery = HEIGHT//2+495 - HERO_SIZE // 2
 
             # Обновление экрана
             SCREEN.fill(BLACK)  # Перерисовываем экран
