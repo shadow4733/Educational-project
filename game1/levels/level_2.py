@@ -20,7 +20,7 @@ class Player(pygame.sprite.Sprite):
 class sword_vertical(pygame.sprite.Sprite):
     def __init__(self, image):
         super().__init__()
-        self.image = pygame.image.load("../images/sword1.png")
+        self.image = pygame.image.load("../images/projectiles/sword1.png")
         #self.image = pygame.transform.rotate(self.image, 180)
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(700,  1200)
@@ -42,7 +42,7 @@ class sword_vertical(pygame.sprite.Sprite):
 class sword_horizontal(pygame.sprite.Sprite):
     def __init__(self, image):
         super().__init__()
-        self.image = pygame.image.load("../images/sword1.png")
+        self.image = pygame.image.load("../images/projectiles/sword1.png")
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(-200,  -70)
         self.rect.y = random.randrange(500, 1000)
@@ -83,13 +83,13 @@ def start_level():
         # Группа спрайтов-проджектайлов (10 мечей вертикально)
         projectiles = pygame.sprite.Group()
         for i in range(10):
-            projectile_temp = sword_vertical(pygame.image.load("../images/sword1.png"))
+            projectile_temp = sword_vertical(pygame.image.load("../images/projectiles/sword1.png"))
             projectile_temp.image = pygame.transform.rotate(projectile_temp.image, 180) # Угол разворота
             projectiles.add(projectile_temp)
 
         # Группа спрайтов-проджектайлов (8 мечей горизонтально)
         for i in range(8):
-            projectile_temp = sword_horizontal(pygame.image.load("../images/sword1.png"))
+            projectile_temp = sword_horizontal(pygame.image.load("../images/projectiles/sword1.png"))
             projectile_temp.image = pygame.transform.rotate(projectile_temp.image, 270) # Угол разворота
             projectiles.add(projectile_temp)
 
