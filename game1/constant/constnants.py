@@ -22,6 +22,6 @@ LIGHT_PINK = (255,204,204)
 
 # Герой
 HERO_COLOR = (0, 255, 0)
-HERO_SIZE = 30
+HERO_SIZE = 32
 
 
