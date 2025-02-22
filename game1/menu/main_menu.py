@@ -29,7 +29,10 @@ level_rects = []
 
 def draw_menu():
     """Отрисовка главного меню"""
-    SCREEN.fill(BLACK)  # Заливка фона черным
+    # Бэкграунд меню
+    background = pygame.image.load("../images/bg/menu_background_1.png")
+    SCREEN.blit(background, (0, 0))
+
     button_rects.clear()  # Очистка списка кнопок перед обновлением
     mouse_x, mouse_y = pygame.mouse.get_pos()  # Получение координат курсора
     y = 200  # Начальная координата Y
