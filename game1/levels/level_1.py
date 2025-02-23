@@ -1,39 +1,54 @@
 import pygame
 import sys
 from game1.constant.constnants import *
-from game1.levels.tutorial import show_instructions  # Импортируем новые функции
+from game1.levels.attack import sword_vertical, sword_horizontal
 
 pygame.init()
 
+# Спрайт игрока
+class Player(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.Surface((HERO_SIZE, HERO_SIZE))
+        self.image.fill(HERO_COLOR)
+        self.rect = self.image.get_rect()
+        self.rect.centerx = WIDTH // 2 - HERO_SIZE // 2
+        self.rect.centery = HEIGHT // 2 + 250 - HERO_SIZE // 2
+        self.speedx = 0
+
 def start_level():
-    """Простой уровень 1"""
-    pygame.display.set_caption("Уровень 1")
+    """Уровень 2"""
+    pygame.display.set_caption("Уровень 2")
 
     font = pygame.font.Font(None, 36)
     SCREEN.fill(BLACK)
 
-    # Размер и начальная позиция героя
-    hero_x = WIDTH // 2 - HERO_SIZE // 2  # Начальная позиция героя по X
-    hero_y = HEIGHT // 2 - HERO_SIZE // 2  # Начальная позиция героя по Y
-
     # Отображение текста
-    level_text = font.render("Уровень 1", True, WHITE)
+    level_text = font.render("Уровень 2", True, WHITE)
     level_text_rect = level_text.get_rect(center=(WIDTH // 2, HEIGHT - 950))  # Сдвигаем текст выше
-
-    # Флаг для отслеживания, показывать ли текст
-    text_shown = True
-    # Флаг для отображения информации о местоположении здоровья и очков
-    info_shown = False
 
     # Переменная для отслеживания здоровья героя
     health = HEALTH
     score = SCORE
     score_timer = SCORE_TIMER
 
-    # Начальный цвет линии
-    line_color = RED
-    line_delay_timer = 0  # Таймер для задержки 15 секунд
-    color_change_timer = 0  # Таймер для смены цвета линии каждые 3 секунды
+    # Инициализация игрока
+    player = Player()
+    play_sprites = pygame.sprite.Group()
+    play_sprites.add(player)
+
+    # Группа спрайтов-проджектайлов (10 мечей вертикально)
+    projectiles = pygame.sprite.Group()
+    for i in range(10):
+        projectile_temp = sword_vertical(pygame.image.load("../images/projectiles/sword1.png"))
+        projectile_temp.image = pygame.transform.rotate(projectile_temp.image, 180) # Угол разворота
+        projectiles.add(projectile_temp)
+
+    # Группа спрайтов-проджектайлов (8 мечей горизонтально)
+    for i in range(8):
+        projectile_temp = sword_horizontal(pygame.image.load("../images/projectiles/sword1.png"))
+        projectile_temp.image = pygame.transform.rotate(projectile_temp.image, 270) # Угол разворота
+        projectiles.add(projectile_temp)
 
     pygame.display.flip()
 
@@ -48,35 +63,32 @@ def start_level():
                 if event.key == pygame.K_ESCAPE:
                     waiting = False
 
-                # Если нажата одна из стрелок, скрываем текст и показываем информацию
-                if event.key in [pygame.K_LEFT, pygame.K_a, pygame.K_RIGHT, pygame.K_d, pygame.K_UP, pygame.K_w,  pygame.K_DOWN, pygame.K_s]:
-                    text_shown = False
-                    info_shown = True
-
-        # Обработка перемещения героя
         keys = pygame.key.get_pressed()  # Получаем состояние клавиш
         if keys[pygame.K_LEFT] or keys[pygame.K_a]:  # Перемещение влево
-            hero_x -= 5
+            player.rect.centerx -= 5
         if keys[pygame.K_RIGHT] or keys[pygame.K_d]:  # Перемещение вправо
-            hero_x += 5
+            player.rect.centerx += 5
         if keys[pygame.K_UP] or keys[pygame.K_w]:  # Перемещение вверх
-            hero_y -= 5
+            player.rect.centery -= 5
         if keys[pygame.K_DOWN] or keys[pygame.K_s]:  # Перемещение вниз
-            hero_y += 5
+            player.rect.centery += 5
 
-        # Ограничение движения героя внутри экрана
-        if hero_x < 0:
-            hero_x = 0
-        elif hero_x + HERO_SIZE > WIDTH:
-            hero_x = WIDTH - HERO_SIZE
-        if hero_y < 0:
-            hero_y = 0
-        elif hero_y + HERO_SIZE > HEIGHT:
-            hero_y = HEIGHT - HERO_SIZE
+        # Ограничение движения героя внутри игровой области
+        if player.rect.centerx - HERO_SIZE // 2 < WIDTH//2-245:
+            player.rect.centerx = WIDTH//2-245 + HERO_SIZE // 2
+        elif player.rect.centerx + HERO_SIZE // 2 > WIDTH//2+245:
+            player.rect.centerx = WIDTH//2+245 - HERO_SIZE // 2
+        if player.rect.centery - HERO_SIZE // 2 < HEIGHT//2+5:
+            player.rect.centery = HEIGHT//2+5 + HERO_SIZE // 2
+        elif player.rect.centery + HERO_SIZE // 2 > HEIGHT//2+495:
+            player.rect.centery = HEIGHT//2+495 - HERO_SIZE // 2
 
-        # Обновление экрана
+    # Обновление экрана
         SCREEN.fill(BLACK)  # Перерисовываем экран
         SCREEN.blit(level_text, level_text_rect)  # Отображаем текст уровня снова
+
+        # Отрисовываем игровую область (белый квадрат)
+        pygame.draw.rect(SCREEN, WHITE,(WIDTH//2-250, HEIGHT//2, 500, 500), 5)
 
         # Отображение здоровья в левом верхнем углу
         health_text = font.render(f"Здоровье: {health}", True, WHITE)
@@ -88,31 +100,8 @@ def start_level():
         score_text_rect = score_text.get_rect(topright=(WIDTH - 60, 120))
         SCREEN.blit(score_text, score_text_rect)
 
-        if text_shown:
-            # Показываем инструкции, если флаг text_shown == True
-            show_instructions(SCREEN, font)  # Используем функцию из tutorial.py
-
-        line_delay_timer += 1
-        if line_delay_timer >= 300:  # 10 секунд (10 секунд * 60 FPS = 300 кадров)
-            # После задержки показываем линию
-            line_y = HEIGHT // 2
-            pygame.draw.line(SCREEN, line_color, (0, line_y), (WIDTH, line_y), 100)
-
-            # Таймер для смены цвета линии каждые 3 секунды
-            color_change_timer += 1
-            if color_change_timer >= 180:  # 3 секунды (3 секунды * 60 FPS = 180 кадров)
-                color_change_timer = 0
-                # Сменить цвет линии
-                if line_color == RED:
-                    line_color = PINK
-                elif line_color == PINK:
-                    line_color = LIGHT_PINK
-                else:
-                    line_color = RED
-
-            # Проверка на столкновение с линией (только если цвет линии LIGHT_PINK)
-            if line_color == LIGHT_PINK and hero_y + HERO_SIZE > line_y - 10 and hero_y < line_y + 10:
-                health -= 0.25  # Наносим урон
+        # Таймер для таймингов
+        clock = pygame.time.Clock()
 
         # Таймер для начисления очков
         score_timer += 1
@@ -121,7 +110,17 @@ def start_level():
             score += 10  # Начисляем очки
 
         # Рисуем героя
-        pygame.draw.rect(SCREEN, HERO_COLOR, (hero_x, hero_y, HERO_SIZE, HERO_SIZE))  # Перерисовываем героя
+        play_sprites.update()
+        play_sprites.draw(SCREEN)
+
+        # Обновляем и отрисовываем мечи
+        projectiles.update()
+        projectiles.draw(SCREEN)
+
+        # Проверяем коллизию проджектайлов
+        for projectile in projectiles:
+            if projectile.rect.colliderect(player):
+                health -= 1
 
         pygame.display.flip()  # Обновляем экран
         pygame.time.Clock().tick(FPS)  # Ограничиваем FPS (60 кадров в секунду)
