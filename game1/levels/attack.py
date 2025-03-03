@@ -10,7 +10,7 @@ class sword_vertical(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(700, 1200)
         self.rect.y = random.randrange(-200, -70)
-        self.speedy = 15
+        self.speedy = 12
 
     def reset_position(self):
         self.rect.x = random.randrange(500, 1400)
@@ -20,7 +20,7 @@ class sword_vertical(pygame.sprite.Sprite):
         self.rect.y += self.speedy
         if self.rect.top > HEIGHT + 50:
             self.reset_position()
-            self.speedy = 15
+            self.speedy = 1
 
 # Спрайт для горизонтально летящих мечей
 class sword_horizontal(pygame.sprite.Sprite):
@@ -30,14 +30,14 @@ class sword_horizontal(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(-200, -70)
         self.rect.y = random.randrange(500, 1000)
-        self.speedx = 20  # Исправил ошибку (speedy -> speedx)
+        self.speedx = 12
 
     def reset_position(self):
         self.rect.x = random.randrange(-200, -70)
         self.rect.y = random.randrange(500, 1000)
 
     def update(self):
-        self.rect.x += self.speedx  # Исправлено (speedy -> speedx)
+        self.rect.x += self.speedx
         if self.rect.left > WIDTH + 80:
             self.reset_position()
-            self.speedx = 20
+            self.speedx = 1

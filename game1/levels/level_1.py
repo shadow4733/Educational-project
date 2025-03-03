@@ -41,15 +41,34 @@ def start_level():
     projectiles = pygame.sprite.Group()
 
     events = [
-        (2, 1, (WIDTH // 2 + 100, HEIGHT // 2 - 300), "vertical"),  # На 2 секунде 3 меча вертикально
-        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 100), "horizontal_left"),  # На 5 секунде 2 меча горизонтально
-        (6, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 200), "horizontal_left"),  # На 5 секунде 2 меча горизонтально
-        (7, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 300), "horizontal_left"),  # На 5 секунде 2 меча горизонтально
-        (8, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 400), "horizontal_left"),  # На 5 секунде 2 меча горизонтально
-        (9, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 200), "horizontal_left"),  # На 5 секунде 2 меча горизонтально
-        (9, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 200), "horizontal_left"),  # На 5 секунде 2 меча горизонтально
-        (11, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 270), "horizontal_left"),  # На 5 секунде 2 меча горизонтально
-        (12, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 350), "horizontal_left"),  # На 5 секунде 2 меча горизонтально
+        (2, 1, (WIDTH // 2 + 100, HEIGHT // 2 - 300), "vertical"),
+        (2, 1, (WIDTH // 2 + 150, HEIGHT // 2 - 300), "vertical"),
+        (2, 1, (WIDTH // 2 + 200, HEIGHT // 2 - 300), "vertical"),
+        (2, 1, (WIDTH // 2, HEIGHT // 2 - 300), "vertical"),
+        (2, 1, (WIDTH // 2 + 50, HEIGHT // 2 - 300), "vertical"),
+        (3, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 300), "horizontal_left"),
+        (3, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 350), "horizontal_left"),
+        (3, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 400), "horizontal_left"),
+        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 100), "horizontal_left"),
+        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 100), "horizontal_left"),
+        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 100), "horizontal_left"),
+        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 150), "horizontal_left"),
+        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 200), "horizontal_left"),
+        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 250), "horizontal_left"),
+        (6, 1, (WIDTH // 2 - 50, HEIGHT // 2 - 300), "vertical"),
+        (6, 1, (WIDTH // 2, HEIGHT // 2 - 300), "vertical"),
+        (6, 1, (WIDTH // 2 + 50, HEIGHT // 2 - 300), "vertical"),
+        (6, 1, (WIDTH // 2 + 100, HEIGHT // 2 - 300), "vertical"),
+        (6, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 200), "horizontal_left"),
+        (6, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 250), "horizontal_left"),
+        (6, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 300), "horizontal_left"),
+
+
+        (8, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 400), "horizontal_left"),
+        (9, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 200), "horizontal_left"),
+        (9, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 200), "horizontal_left"),
+        (11, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 270), "horizontal_left"),
+        (12, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 350), "horizontal_left"),
     ]
 
     clock = pygame.time.Clock()
