@@ -1,7 +1,7 @@
 import pygame
 import sys
 
-from game1.constant.constnants import WIDTH, HEIGHT, GRAY, WHITE, BLACK, GREEN, SCREEN
+from game1.constant.constnants import SCREEN, buttons, WHITE, WIDTH, GREEN, BLACK, levels
 from game1.levels import level_1
 from game1.levels import level_2
 
@@ -10,18 +10,11 @@ pygame.init()
 # Инициализация экрана
 pygame.display.set_caption("Главное меню")
 
-# Шрифт
-font = pygame.font.Font(None, 36)
-
-# Кнопки главного меню
-buttons = ["Начать сначала", "Выбрать уровень", "Настройки", "Выход"]
-selected_level = None
-
-# Доступные уровни
-levels = ["Уровень 1", "Уровень 2", "Уровень 3", "Уровень 4", "Уровень 5", "Уровень 6", "Уровень 7", "Уровень 8", "Уровень 9", "Уровень 10"]
-
 # Текущее состояние меню
 menu_state = "main"
+
+# Шрифт
+font = pygame.font.Font(None, 36)
 
 # Списки прямоугольников кнопок для определения нажатий
 button_rects = []
@@ -30,7 +23,7 @@ level_rects = []
 def draw_menu():
     """Отрисовка главного меню"""
     # Бэкграунд меню
-    background = pygame.image.load("../images/bg/menu_background_1.png")
+    background = pygame.image.load("../images/bg/menu_background_2.png")
     SCREEN.blit(background, (0, 0))
 
     button_rects.clear()  # Очистка списка кнопок перед обновлением
