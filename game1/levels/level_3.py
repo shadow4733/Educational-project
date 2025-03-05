@@ -3,9 +3,9 @@ import sys
 
 from game1.Player import Player
 from game1.constant.constnants import *
-from game1.levels.attack import sword1_vertical, sword1_horizontal, dragon_vertical, get_attack_damage, \
+from game1.levels.attack import sword1_vertical, sword1_horizontal_left, dragon_vertical, get_attack_damage, \
     dragon_horizontal, \
-    chicken_vertical, chicken_horizontal, fireball_vertical, fireball_horizontal, sword2_vertical, sword2_horizontal
+    chicken_vertical, chicken_horizontal, fireball_vertical, fireball_horizontal, sword2_vertical, sword2_horizontal_left
 from game1.levels.events.event_level_3 import events
 
 pygame.init()
@@ -90,7 +90,7 @@ def start_level():
                         projectile_temp = sword1_vertical(rotated_sword1)
                     elif direction == "sword1_horizontal_left":
                         rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 270)
-                        projectile_temp = sword1_horizontal(rotated_sword1)
+                        projectile_temp = sword1_horizontal_left(rotated_sword1)
                     elif direction == "dragon_vertical":
                         rotated_dragon = pygame.transform.rotate(dragon_image.copy(), 180)
                         projectile_temp = dragon_vertical(rotated_dragon)
@@ -108,7 +108,7 @@ def start_level():
                         projectile_temp = sword2_vertical(rotated_sword2)
                     elif direction == "sword2_horizontal_left":
                         rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 270)
-                        projectile_temp = sword2_horizontal(rotated_sword2)
+                        projectile_temp = sword2_horizontal_left(rotated_sword2)
                     elif direction == "fireball_vertical":
                         rotated_sword2 = pygame.transform.rotate(fireball_image.copy(), 180)
                         projectile_temp = fireball_vertical(rotated_sword2)

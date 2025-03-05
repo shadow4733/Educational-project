@@ -3,12 +3,12 @@ import pygame
 from game1.constant.constnants import HEIGHT, WIDTH
 
 ATTACK_DAMAGE = {
-    "sword1_vertical": 1,
-    "sword1_horizontal_left": 1,
+    "sword1_vertical": 0.5,
+    "sword1_horizontal_left": 0.5,
     "dragon_vertical": 1,
     "dragon_horizontal": 1,
-    "chicken_vertical": 1,
-    "chicken_horizontal": 1,
+    "chicken_vertical": -2,
+    "chicken_horizontal": -2,
     "sword2_vertical": 1,
     "sword2_horizontal_left": 1,
     "fireball_vertical": 1,
@@ -41,7 +41,7 @@ class sword1_vertical(pygame.sprite.Sprite):
             self.speedy = 1
 
 # Спрайт для горизонтально летящих мечей
-class sword1_horizontal(pygame.sprite.Sprite):
+class sword1_horizontal_left(pygame.sprite.Sprite):
     def __init__(self, image):
         super().__init__()
         self.image = image  # Используем переданное изображение
@@ -164,7 +164,7 @@ class sword2_vertical(pygame.sprite.Sprite):
             self.speedy = 1
 
 # Спрайт для горизонтально летящих мечей2
-class sword2_horizontal(pygame.sprite.Sprite):
+class sword2_horizontal_left(pygame.sprite.Sprite):
     def __init__(self, image):
         super().__init__()
         self.image = image  # Используем переданное изображение
