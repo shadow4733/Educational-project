@@ -3,7 +3,10 @@ import sys
 
 from game1.Player import Player
 from game1.constant.constnants import *
-from game1.levels.attack import sword_vertical, sword_horizontal, dragon_vertical, get_attack_damage
+from game1.levels.attack import sword1_vertical, sword1_horizontal, dragon_vertical, get_attack_damage, \
+    dragon_horizontal, \
+    chicken_vertical, chicken_horizontal, fireball_vertical, fireball_horizontal, sword2_vertical, sword2_horizontal
+from game1.levels.events.event_level_1 import events
 
 pygame.init()
 
@@ -30,39 +33,6 @@ def start_level():
 
     # Группа спрайтов-проджектайлов
     projectiles = pygame.sprite.Group()
-
-    events = [
-        (2, 1, (WIDTH // 2 + 100, HEIGHT // 2 - 300), "sword_vertical"),
-        (2, 1, (WIDTH // 2 + 150, HEIGHT // 2 - 300), "sword_vertical"),
-        (2, 1, (WIDTH // 2 + 200, HEIGHT // 2 - 300), "sword_vertical"),
-        (2, 1, (WIDTH // 2, HEIGHT // 2 - 300), "sword_vertical"),
-        (2, 1, (WIDTH // 2 + 50, HEIGHT // 2 - 300), "sword_vertical"),
-        (3, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 300), "sword_horizontal_left"),
-        (3, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 350), "sword_horizontal_left"),
-        (3, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 400), "sword_horizontal_left"),
-        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 100), "sword_horizontal_left"),
-        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 100), "sword_horizontal_left"),
-        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 100), "sword_horizontal_left"),
-        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 150), "sword_horizontal_left"),
-        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 200), "sword_horizontal_left"),
-        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 250), "sword_horizontal_left"),
-        (6, 1, (WIDTH // 2 - 50, HEIGHT // 2 - 300), "sword_vertical"),
-        (6, 1, (WIDTH // 2, HEIGHT // 2 - 300), "sword_vertical"),
-        (6, 1, (WIDTH // 2 + 50, HEIGHT // 2 - 300), "sword_vertical"),
-        (6, 1, (WIDTH // 2 + 100, HEIGHT // 2 - 300), "sword_vertical"),
-        (6, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 200), "sword_horizontal_left"),
-        (6, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 250), "sword_horizontal_left"),
-        (6, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 300), "sword_horizontal_left"),
-        (7, 1, (WIDTH // 2 - 50, HEIGHT // 2 - 300), "dragon_vertical"),
-
-
-
-        (8, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 400), "horizontal_left"),
-        (9, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 200), "horizontal_left"),
-        (9, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 200), "horizontal_left"),
-        (11, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 270), "horizontal_left"),
-        (12, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 350), "horizontal_left"),
-    ]
 
     clock = pygame.time.Clock()
     start_time = pygame.time.get_ticks()  # Время начала уровня
@@ -103,8 +73,11 @@ def start_level():
             player.rect.centery = HEIGHT // 2 + 495 - HERO_SIZE // 2
 
         # Загружаем изображение меча заранее
-        sword_image = pygame.image.load("../images/projectiles/sword1.png")
-        dragon_image = pygame.image.load("../images/projectiles/dragon.png")
+        sword1_image = pygame.image.load("../images/projectiles/sword1.png")
+        dragon_image = pygame.image.load("../images/projectiles/dragon_main.png")
+        chicken_image = pygame.image.load("../images/projectiles/chicken.png")
+        sword2_image = pygame.image.load("../images/projectiles/sword2.png")
+        fireball_image = pygame.image.load("../images/projectiles/fireball.gif")
 
         # Проверяем события
         for event in events[:]:
@@ -112,15 +85,36 @@ def start_level():
             if event_time <= current_time < event_time + 1:  # Проверяем, наступило ли время события
                 for _ in range(num_swords):
                     # Выбираем направление меча
-                    if direction == "sword_vertical":
-                        rotated_sword = pygame.transform.rotate(sword_image.copy(), 180)
-                        projectile_temp = sword_vertical(rotated_sword)
-                    elif direction == "sword_horizontal_left":
-                        rotated_sword = pygame.transform.rotate(sword_image.copy(), 270)
-                        projectile_temp = sword_horizontal(rotated_sword)
+                    if direction == "sword1_vertical":
+                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 180)
+                        projectile_temp = sword1_vertical(rotated_sword1)
+                    elif direction == "sword1_horizontal_left":
+                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 270)
+                        projectile_temp = sword1_horizontal(rotated_sword1)
                     elif direction == "dragon_vertical":
                         rotated_dragon = pygame.transform.rotate(dragon_image.copy(), 180)
                         projectile_temp = dragon_vertical(rotated_dragon)
+                    elif direction == "dragon_horizontal":
+                        rotated_dragon = pygame.transform.rotate(dragon_image.copy(), 270)
+                        projectile_temp = dragon_horizontal(rotated_dragon)
+                    elif direction == "chicken_vertical":
+                        rotated_chicken = pygame.transform.rotate(chicken_image.copy(), 180)
+                        projectile_temp = chicken_vertical(rotated_chicken)
+                    elif direction == "chicken_horizontal":
+                        rotated_chicken = pygame.transform.rotate(chicken_image.copy(), 270)
+                        projectile_temp = chicken_horizontal(rotated_chicken)
+                    elif direction == "sword2_vertical":
+                        rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 180)
+                        projectile_temp = sword2_vertical(rotated_sword2)
+                    elif direction == "sword2_horizontal_left":
+                        rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 270)
+                        projectile_temp = sword2_horizontal(rotated_sword2)
+                    elif direction == "fireball_vertical":
+                        rotated_sword2 = pygame.transform.rotate(fireball_image.copy(), 180)
+                        projectile_temp = fireball_vertical(rotated_sword2)
+                    elif direction == "fireball_horizontal":
+                        rotated_fireball = pygame.transform.rotate(fireball_image.copy(), 270)
+                        projectile_temp = fireball_horizontal(rotated_fireball)
 
                     # Устанавливаем начальные координаты меча
                     projectile_temp.rect = projectile_temp.image.get_rect(center=start_pos)
@@ -133,7 +127,6 @@ def start_level():
             if (projectile.rect.bottom < 0 or projectile.rect.top > HEIGHT or
                     projectile.rect.right < 0 or projectile.rect.left > WIDTH):
                 projectile.kill()
-
 
         # Обновление экрана
         SCREEN.fill(BLACK)  # Перерисовываем экран
@@ -173,7 +166,6 @@ def start_level():
                 damage = get_attack_damage(attack_type)
                 health -= damage
                 player.take_damage(damage)
-
 
         pygame.display.flip()  # Обновляем экран
         clock.tick(FPS)  # Ограничиваем FPS (60 кадров в секунду)
