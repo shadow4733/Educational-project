@@ -1,20 +1,11 @@
 import pygame
 import sys
+
+from game1.Player import Player
 from game1.constant.constnants import *
-from game1.levels.attack import sword_vertical, sword_horizontal
+from game1.levels.attack import sword_vertical, sword_horizontal, dragon_vertical, get_attack_damage
 
 pygame.init()
-
-# Спрайт игрока
-class Player(pygame.sprite.Sprite):
-    def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((HERO_SIZE, HERO_SIZE))
-        self.image.fill(HERO_COLOR)
-        self.rect = self.image.get_rect()
-        self.rect.centerx = WIDTH // 2 - HERO_SIZE // 2
-        self.rect.centery = HEIGHT // 2 + 250 - HERO_SIZE // 2
-        self.speedx = 0
 
 def start_level():
     """Уровень 1"""
@@ -41,27 +32,29 @@ def start_level():
     projectiles = pygame.sprite.Group()
 
     events = [
-        (2, 1, (WIDTH // 2 + 100, HEIGHT // 2 - 300), "vertical"),
-        (2, 1, (WIDTH // 2 + 150, HEIGHT // 2 - 300), "vertical"),
-        (2, 1, (WIDTH // 2 + 200, HEIGHT // 2 - 300), "vertical"),
-        (2, 1, (WIDTH // 2, HEIGHT // 2 - 300), "vertical"),
-        (2, 1, (WIDTH // 2 + 50, HEIGHT // 2 - 300), "vertical"),
-        (3, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 300), "horizontal_left"),
-        (3, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 350), "horizontal_left"),
-        (3, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 400), "horizontal_left"),
-        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 100), "horizontal_left"),
-        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 100), "horizontal_left"),
-        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 100), "horizontal_left"),
-        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 150), "horizontal_left"),
-        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 200), "horizontal_left"),
-        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 250), "horizontal_left"),
-        (6, 1, (WIDTH // 2 - 50, HEIGHT // 2 - 300), "vertical"),
-        (6, 1, (WIDTH // 2, HEIGHT // 2 - 300), "vertical"),
-        (6, 1, (WIDTH // 2 + 50, HEIGHT // 2 - 300), "vertical"),
-        (6, 1, (WIDTH // 2 + 100, HEIGHT // 2 - 300), "vertical"),
-        (6, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 200), "horizontal_left"),
-        (6, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 250), "horizontal_left"),
-        (6, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 300), "horizontal_left"),
+        (2, 1, (WIDTH // 2 + 100, HEIGHT // 2 - 300), "sword_vertical"),
+        (2, 1, (WIDTH // 2 + 150, HEIGHT // 2 - 300), "sword_vertical"),
+        (2, 1, (WIDTH // 2 + 200, HEIGHT // 2 - 300), "sword_vertical"),
+        (2, 1, (WIDTH // 2, HEIGHT // 2 - 300), "sword_vertical"),
+        (2, 1, (WIDTH // 2 + 50, HEIGHT // 2 - 300), "sword_vertical"),
+        (3, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 300), "sword_horizontal_left"),
+        (3, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 350), "sword_horizontal_left"),
+        (3, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 400), "sword_horizontal_left"),
+        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 100), "sword_horizontal_left"),
+        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 100), "sword_horizontal_left"),
+        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 100), "sword_horizontal_left"),
+        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 150), "sword_horizontal_left"),
+        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 200), "sword_horizontal_left"),
+        (5, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 250), "sword_horizontal_left"),
+        (6, 1, (WIDTH // 2 - 50, HEIGHT // 2 - 300), "sword_vertical"),
+        (6, 1, (WIDTH // 2, HEIGHT // 2 - 300), "sword_vertical"),
+        (6, 1, (WIDTH // 2 + 50, HEIGHT // 2 - 300), "sword_vertical"),
+        (6, 1, (WIDTH // 2 + 100, HEIGHT // 2 - 300), "sword_vertical"),
+        (6, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 200), "sword_horizontal_left"),
+        (6, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 250), "sword_horizontal_left"),
+        (6, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 300), "sword_horizontal_left"),
+        (7, 1, (WIDTH // 2 - 50, HEIGHT // 2 - 300), "dragon_vertical"),
+
 
 
         (8, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 400), "horizontal_left"),
@@ -111,6 +104,7 @@ def start_level():
 
         # Загружаем изображение меча заранее
         sword_image = pygame.image.load("../images/projectiles/sword1.png")
+        dragon_image = pygame.image.load("../images/projectiles/dragon.png")
 
         # Проверяем события
         for event in events[:]:
@@ -118,12 +112,15 @@ def start_level():
             if event_time <= current_time < event_time + 1:  # Проверяем, наступило ли время события
                 for _ in range(num_swords):
                     # Выбираем направление меча
-                    if direction == "vertical":
+                    if direction == "sword_vertical":
                         rotated_sword = pygame.transform.rotate(sword_image.copy(), 180)
                         projectile_temp = sword_vertical(rotated_sword)
-                    elif direction == "horizontal_left":
+                    elif direction == "sword_horizontal_left":
                         rotated_sword = pygame.transform.rotate(sword_image.copy(), 270)
                         projectile_temp = sword_horizontal(rotated_sword)
+                    elif direction == "dragon_vertical":
+                        rotated_dragon = pygame.transform.rotate(dragon_image.copy(), 180)
+                        projectile_temp = dragon_vertical(rotated_dragon)
 
                     # Устанавливаем начальные координаты меча
                     projectile_temp.rect = projectile_temp.image.get_rect(center=start_pos)
@@ -172,7 +169,11 @@ def start_level():
         # Проверяем коллизию проджектайлов
         for projectile in projectiles:
             if projectile.rect.colliderect(player):
-                health -= 1
+                attack_type = projectile.__class__.__name__.lower()
+                damage = get_attack_damage(attack_type)
+                health -= damage
+                player.take_damage(damage)
+
 
         pygame.display.flip()  # Обновляем экран
         clock.tick(FPS)  # Ограничиваем FPS (60 кадров в секунду)
