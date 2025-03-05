@@ -2,7 +2,7 @@ import pygame
 import sys
 
 from game1.constant.constnants import SCREEN, buttons, WHITE, WIDTH, GREEN, BLACK, levels
-from game1.levels import level_1
+from game1.levels import level_1, level_3
 from game1.levels import level_2
 
 pygame.init()
@@ -40,7 +40,8 @@ def draw_menu():
 
 def draw_levels():
     """Отрисовка списка уровней"""
-    SCREEN.fill(BLACK)  # Заливка фона черным
+    background = pygame.image.load("../images/bg/menu_background_2.png")
+    SCREEN.blit(background, (0, 0))
     level_rects.clear()  # Очистка списка кнопок уровней
     mouse_x, mouse_y = pygame.mouse.get_pos()  # Получение координат курсора
     y = 200  # Начальная координата Y
@@ -79,6 +80,8 @@ def main():
                 level_1.start_level()
             elif selected_level == "Уровень 2":
                 level_2.start_level()
+            elif selected_level == "Уровень 3":
+                level_3.start_level()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:  # Обработка выхода из игры
