@@ -26,19 +26,15 @@ class sword1_vertical(pygame.sprite.Sprite):
         super().__init__()
         self.image = image  # Используем переданное изображение
         self.rect = self.image.get_rect()
-        self.rect.x = random.randrange(700, 1200)
-        self.rect.y = random.randrange(-200, -70)
         self.speedy = 12
-
-    def reset_position(self):
-        self.rect.x = random.randrange(500, 1400)
-        self.rect.y = random.randrange(-200, -70)
 
     def update(self):
         self.rect.y += self.speedy
         if self.rect.top > HEIGHT + 50:
-            self.reset_position()
             self.speedy = 1
+
+
+
 
 # Спрайт для горизонтально летящих мечей
 class sword1_horizontal_left(pygame.sprite.Sprite):
@@ -46,20 +42,28 @@ class sword1_horizontal_left(pygame.sprite.Sprite):
         super().__init__()
         self.image = image  # Используем переданное изображение
         self.rect = self.image.get_rect()
-        self.rect.x = random.randrange(-200, -70)
-        self.rect.y = random.randrange(500, 1000)
         self.speedx = 12  # Скорость движения по оси x
-
-    def reset_position(self):
-        self.rect.x = random.randrange(-200, -70)
-        self.rect.y = random.randrange(500, 1000)
 
     def update(self):
         # Обновляем позицию объекта, двигаясь по оси x
         self.rect.x += self.speedx
         # Если объект выходит за пределы экрана, сбрасываем его на новое место
-        if self.rect.left > WIDTH + 80:
-            self.reset_position()
+
+
+class sword1_diagonal(pygame.sprite.Sprite):
+    def __init__(self, image):
+        super().__init__()
+        self.image = image  # Используем переданное изображение
+        self.rect = self.image.get_rect()
+        self.speedy = 12  # Скорость по вертикали
+        self.speedx = 12  # Скорость по горизонтали (добавлено)
+        self.rect.center = (WIDTH // 2 - 250, HEIGHT // 2)  # начальная позиция, можно задавать тут
+
+    def update(self):
+        self.rect.y += self.speedy
+        self.rect.x += self.speedx  # Движение по горизонтали
+        if self.rect.top > HEIGHT + 50 or self.rect.left < -50 or self.rect.right > WIDTH + 50: # обработка края экрана
+            self.kill()
 
 # Спрайт для вертикально летящих драконов
 class dragon_vertical(pygame.sprite.Sprite):
