@@ -14,6 +14,10 @@ def start_level():
     """Уровень 3"""
     pygame.display.set_caption("Уровень 3")
 
+    pygame.mixer.music.load('sounds/MM 8 bit 2.mp3')
+    pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(0.2)
+
     font = pygame.font.Font(None, 36)
 
     SCREEN.fill(BLACK)
