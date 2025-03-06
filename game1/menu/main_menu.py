@@ -20,6 +20,10 @@ font = pygame.font.Font(None, 36)
 button_rects = []
 level_rects = []
 
+pygame.mixer.music.load('sounds/MM usual castle.mp3')
+pygame.mixer.music.play(-1)
+pygame.mixer.music.set_volume(0.2)
+
 def draw_menu():
     """Отрисовка главного меню"""
     # Бэкграунд меню
@@ -77,10 +81,13 @@ def main():
             draw_levels()
         elif menu_state == "game":
             if selected_level == "Уровень 1":
+                pygame.mixer.music.pause()
                 level_1.start_level()
             elif selected_level == "Уровень 2":
+                pygame.mixer.music.pause()
                 level_2.start_level()
             elif selected_level == "Уровень 3":
+                pygame.mixer.music.pause()
                 level_3.start_level()
 
         for event in pygame.event.get():
