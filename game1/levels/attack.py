@@ -13,6 +13,7 @@ ATTACK_DAMAGE = {
     "sword2_horizontal_left": 1,
     "fireball_vertical": 1,
     "fireball_horizontal": 1,
+    "sword1_diagonal":1,
 
 }
 
