@@ -23,7 +23,7 @@ level_rects = []
 def draw_menu():
     """Отрисовка главного меню"""
     # Бэкграунд меню
-    background = pygame.image.load("../images/bg/menu_background_2.png")
+    background = pygame.image.load("../images/bg/menu_background_3 prev.png")
     SCREEN.blit(background, (0, 0))
 
     button_rects.clear()  # Очистка списка кнопок перед обновлением
@@ -40,7 +40,7 @@ def draw_menu():
 
 def draw_levels():
     """Отрисовка списка уровней"""
-    background = pygame.image.load("../images/bg/menu_background_2.png")
+    background = pygame.image.load("../images/bg/menu_background_3 prev.png")
     SCREEN.blit(background, (0, 0))
     level_rects.clear()  # Очистка списка кнопок уровней
     mouse_x, mouse_y = pygame.mouse.get_pos()  # Получение координат курсора
