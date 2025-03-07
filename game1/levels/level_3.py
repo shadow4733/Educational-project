@@ -5,7 +5,7 @@ from game1.Player import Player
 from game1.constant.constnants import *
 from game1.levels.attack import sword1_vertical, sword1_horizontal_left, dragon_vertical, get_attack_damage, \
     dragon_horizontal, chicken_vertical, chicken_horizontal, fireball_vertical, fireball_horizontal, \
-    sword2_vertical, sword2_horizontal_left, sword1_diagonal
+    sword2_vertical, sword2_horizontal_left, sword1_diagonal, sword1_diagonal2
 from game1.levels.events.event_level_3 import events
 
 pygame.init()
@@ -106,7 +106,12 @@ def start_level():
                     elif direction == "sword1_diagonal":
                         rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), -135)
                         projectile_temp = sword1_diagonal(rotated_sword1)
-                        all_projectiles.add(projectile_temp)
+
+
+                    elif direction == "sword1_diagonal2":
+                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 135)
+                        projectile_temp = sword1_diagonal2(rotated_sword1)
+
 
                     elif direction == "sword1_horizontal_left":
                         rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 270)

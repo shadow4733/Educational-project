@@ -2,11 +2,20 @@ from game1.constant.constnants import WIDTH, HEIGHT
 
 WHITE_RECT_X = WIDTH // 2 - 250
 WHITE_RECT_Y = HEIGHT // 2
+WHITE_RECT_WIDTH = 500
+WHITE_RECT_HEIGHT = 500
+
+
+# "topleft": (WHITE_RECT_X, WHITE_RECT_Y, 1, 1),  # Нижний правый угол
+# "topright": (WHITE_RECT_X + WHITE_RECT_WIDTH, WHITE_RECT_Y, -1, 1),  # Нижний левый угол
+# "bottomleft": (WHITE_RECT_X, WHITE_RECT_Y + WHITE_RECT_HEIGHT, 1, -1),  # Верхний правый угол
+# "bottomright": (WHITE_RECT_X + WHITE_RECT_WIDTH, WHITE_RECT_Y + WHITE_RECT_HEIGHT, -1, -1), # Верхний левый угол
 
 
 
 events = [
-    (1, 1, (WHITE_RECT_X-100, WHITE_RECT_Y-100), "sword1_diagonal"),
+    (1, 1, (WHITE_RECT_X + WHITE_RECT_WIDTH, WHITE_RECT_Y), "sword1_diagonal2"),
+    (1, 1, (WHITE_RECT_X, WHITE_RECT_Y), "sword1_diagonal"),
     (2, 1, (WIDTH // 2, HEIGHT // 2 - 300), "sword1_vertical"),
     (2, 1, (WIDTH // 2 + 50, HEIGHT // 2 - 300), "sword1_vertical"),
     (2, 1, (WIDTH // 2 + 100, HEIGHT // 2 - 300), "sword1_vertical"),
@@ -35,6 +44,4 @@ events = [
     (9, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 300), "sword2_horizontal_left"),
     (10, 1, (WIDTH // 2 - 50, HEIGHT // 2 - 300), "fireball_vertical"),
     (10, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 300), "fireball_horizontal")
-
-
 ]
