@@ -15,6 +15,15 @@ ATTACK_DAMAGE = {
     "fireball_horizontal": 1,
     "sword1_diagonal":0.5,
     "sword1_diagonal2":0.5,
+    "dragon1_diagonal":1,
+    "dragon1_diagonal2":1,
+    "chicken_diagonal":-1.5,
+    "chicken_diagonal2":-1.5,
+    "sword2_diagonal": 0.75,
+    "sword2_diagonal2": 0.75,
+    "fireball_diagonal": 1.25,
+    "fireball_diagonal2": 1.25,
+
 
 }
 
@@ -124,6 +133,37 @@ class dragon_horizontal(pygame.sprite.Sprite):
             self.reset_position()
 
 
+class dragon1_diagonal(pygame.sprite.Sprite):
+    def __init__(self, image):
+        super().__init__()
+        self.image = image  # Используем переданное изображение
+        self.rect = self.image.get_rect()
+        self.speedy = 12  # Скорость по вертикали
+        self.speedx = 12  # Скорость по горизонтали (добавлено)
+        self.rect.center = (WIDTH // 2 - 250, HEIGHT // 2)  # начальная позиция, можно задавать тут
+
+    def update(self):
+        self.rect.y += self.speedy
+        self.rect.x += self.speedx  # Движение по горизонтали
+        if self.rect.top > HEIGHT + 50 or self.rect.left < -50 or self.rect.right > WIDTH + 50: # обработка края экрана
+            self.kill()
+
+class dragon1_diagonal2(pygame.sprite.Sprite):
+    def __init__(self, image):
+        super().__init__()
+        self.image = image  # Используем переданное изображение
+        self.rect = self.image.get_rect()
+        self.speedy = 12
+        self.speedx = -12
+        self.rect.center = (WIDTH // 2 - 250, HEIGHT // 2)  # начальная позиция, можно задавать тут
+
+    def update(self):
+        self.rect.y += self.speedy
+        self.rect.x += self.speedx  # Движение по горизонтали
+        if self.rect.top > HEIGHT + 50 or self.rect.left < -50 or self.rect.right > WIDTH + 50: # обработка края экрана
+            self.kill()
+
+
 
 # Спрайт для вертикально летящей курицы
 class chicken_vertical(pygame.sprite.Sprite):
@@ -165,6 +205,36 @@ class chicken_horizontal(pygame.sprite.Sprite):
         # Если объект выходит за пределы экрана, сбрасываем его на новое место
         if self.rect.left > WIDTH + 80:
             self.reset_position()
+
+class chicken_diagonal(pygame.sprite.Sprite):
+    def __init__(self, image):
+        super().__init__()
+        self.image = image  # Используем переданное изображение
+        self.rect = self.image.get_rect()
+        self.speedy = 12  # Скорость по вертикали
+        self.speedx = 12  # Скорость по горизонтали (добавлено)
+        self.rect.center = (WIDTH // 2 - 250, HEIGHT // 2)  # начальная позиция, можно задавать тут
+
+    def update(self):
+        self.rect.y += self.speedy
+        self.rect.x += self.speedx  # Движение по горизонтали
+        if self.rect.top > HEIGHT + 50 or self.rect.left < -50 or self.rect.right > WIDTH + 50: # обработка края экрана
+            self.kill()
+
+class chicken_diagonal2(pygame.sprite.Sprite):
+    def __init__(self, image):
+        super().__init__()
+        self.image = image  # Используем переданное изображение
+        self.rect = self.image.get_rect()
+        self.speedy = 12
+        self.speedx = -12
+        self.rect.center = (WIDTH // 2 - 250, HEIGHT // 2)  # начальная позиция, можно задавать тут
+
+    def update(self):
+        self.rect.y += self.speedy
+        self.rect.x += self.speedx  # Движение по горизонтали
+        if self.rect.top > HEIGHT + 50 or self.rect.left < -50 or self.rect.right > WIDTH + 50: # обработка края экрана
+            self.kill()
 
 
 
@@ -209,6 +279,36 @@ class sword2_horizontal_left(pygame.sprite.Sprite):
         if self.rect.left > WIDTH + 80:
             self.reset_position()
 
+class sword2_diagonal(pygame.sprite.Sprite):
+    def __init__(self, image):
+        super().__init__()
+        self.image = image  # Используем переданное изображение
+        self.rect = self.image.get_rect()
+        self.speedy = 12  # Скорость по вертикали
+        self.speedx = 12  # Скорость по горизонтали (добавлено)
+        self.rect.center = (WIDTH // 2 - 250, HEIGHT // 2)  # начальная позиция, можно задавать тут
+
+    def update(self):
+        self.rect.y += self.speedy
+        self.rect.x += self.speedx  # Движение по горизонтали
+        if self.rect.top > HEIGHT + 50 or self.rect.left < -50 or self.rect.right > WIDTH + 50:  # обработка края экрана
+            self.kill()
+
+class sword2_diagonal2(pygame.sprite.Sprite):
+    def __init__(self, image):
+        super().__init__()
+        self.image = image  # Используем переданное изображение
+        self.rect = self.image.get_rect()
+        self.speedy = 12
+        self.speedx = -12
+        self.rect.center = (WIDTH // 2 - 250, HEIGHT // 2)  # начальная позиция, можно задавать тут
+
+    def update(self):
+        self.rect.y += self.speedy
+        self.rect.x += self.speedx  # Движение по горизонтали
+        if self.rect.top > HEIGHT + 50 or self.rect.left < -50 or self.rect.right > WIDTH + 50:  # обработка края экрана
+            self.kill()
+
 
 # Спрайт для вертикально летящего фаербола
 class fireball_vertical(pygame.sprite.Sprite):
@@ -250,3 +350,34 @@ class fireball_horizontal(pygame.sprite.Sprite):
         # Если объект выходит за пределы экрана, сбрасываем его на новое место
         if self.rect.left > WIDTH + 80:
             self.reset_position()
+
+
+class fireball_diagonal(pygame.sprite.Sprite):
+    def __init__(self, image):
+        super().__init__()
+        self.image = image  # Используем переданное изображение
+        self.rect = self.image.get_rect()
+        self.speedy = 12  # Скорость по вертикали
+        self.speedx = 12  # Скорость по горизонтали (добавлено)
+        self.rect.center = (WIDTH // 2 - 250, HEIGHT // 2)  # начальная позиция, можно задавать тут
+
+    def update(self):
+        self.rect.y += self.speedy
+        self.rect.x += self.speedx  # Движение по горизонтали
+        if self.rect.top > HEIGHT + 50 or self.rect.left < -50 or self.rect.right > WIDTH + 50:  # обработка края экрана
+            self.kill()
+
+class fireball_diagonal2(pygame.sprite.Sprite):
+    def __init__(self, image):
+        super().__init__()
+        self.image = image  # Используем переданное изображение
+        self.rect = self.image.get_rect()
+        self.speedy = 12
+        self.speedx = -12
+        self.rect.center = (WIDTH // 2 - 250, HEIGHT // 2)  # начальная позиция, можно задавать тут
+
+    def update(self):
+        self.rect.y += self.speedy
+        self.rect.x += self.speedx  # Движение по горизонтали
+        if self.rect.top > HEIGHT + 50 or self.rect.left < -50 or self.rect.right > WIDTH + 50:  # обработка края экрана
+            self.kill()
