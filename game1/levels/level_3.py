@@ -5,7 +5,8 @@ from game1.Player import Player
 from game1.constant.constnants import *
 from game1.levels.attack import sword1_vertical, sword1_horizontal_left, dragon_vertical, get_attack_damage, \
     dragon_horizontal, chicken_vertical, chicken_horizontal, fireball_vertical, fireball_horizontal, \
-    sword2_vertical, sword2_horizontal_left, sword1_diagonal, sword1_diagonal2
+    sword2_vertical, sword2_horizontal_left, sword1_diagonal, sword1_diagonal2, dragon1_diagonal2, \
+    dragon1_diagonal, chicken_diagonal2, chicken_diagonal, sword2_diagonal, sword2_diagonal2, fireball_diagonal2, fireball_diagonal
 from game1.levels.events.event_level_3 import events
 
 pygame.init()
@@ -99,23 +100,20 @@ def start_level():
             event_time, num_swords, start_pos, direction = event
             if event_time <= current_time < event_time + 1:
                 for _ in range(num_swords):
+
                     if direction == "sword1_vertical":
                         rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 180)
                         projectile_temp = sword1_vertical(rotated_sword1)
-
                     elif direction == "sword1_diagonal":
                         rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), -135)
                         projectile_temp = sword1_diagonal(rotated_sword1)
-
-
                     elif direction == "sword1_diagonal2":
                         rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 135)
                         projectile_temp = sword1_diagonal2(rotated_sword1)
-
-
                     elif direction == "sword1_horizontal_left":
                         rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 270)
                         projectile_temp = sword1_horizontal_left(rotated_sword1)
+
 
                     elif direction == "dragon_vertical":
                         rotated_dragon = pygame.transform.rotate(dragon_image.copy(), 180)
@@ -123,24 +121,59 @@ def start_level():
                     elif direction == "dragon_horizontal":
                         rotated_dragon = pygame.transform.rotate(dragon_image.copy(), 270)
                         projectile_temp = dragon_horizontal(rotated_dragon)
+                    elif direction == "dragon1_diagonal":
+                        rotated_dragon = pygame.transform.rotate(dragon_image.copy(), -135)
+                        projectile_temp = dragon1_diagonal(rotated_dragon)
+                    elif direction == "dragon1_diagonal2":
+                        rotated_dragon = pygame.transform.rotate(dragon_image.copy(), 135)
+                        projectile_temp = dragon1_diagonal2(rotated_dragon)
+
+
+
                     elif direction == "chicken_vertical":
                         rotated_chicken = pygame.transform.rotate(chicken_image.copy(), 180)
                         projectile_temp = chicken_vertical(rotated_chicken)
                     elif direction == "chicken_horizontal":
                         rotated_chicken = pygame.transform.rotate(chicken_image.copy(), 270)
                         projectile_temp = chicken_horizontal(rotated_chicken)
+                    elif direction == "chicken_diagonal":
+                        rotated_chicken = pygame.transform.rotate(chicken_image.copy(), -135)
+                        projectile_temp = chicken_diagonal(rotated_chicken)
+                    elif direction == "chicken_diagonal2":
+                        rotated_chicken = pygame.transform.rotate(chicken_image.copy(), 135)
+                        projectile_temp = chicken_diagonal2(rotated_chicken)
+
+
+
                     elif direction == "sword2_vertical":
                         rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 180)
                         projectile_temp = sword2_vertical(rotated_sword2)
                     elif direction == "sword2_horizontal_left":
                         rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 270)
                         projectile_temp = sword2_horizontal_left(rotated_sword2)
+                    elif direction == "sword2_diagonal":
+                        rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 270)
+                        projectile_temp = sword2_diagonal(rotated_sword2)
+                    elif direction == "sword2_diagonal2":
+                        rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 180)
+                        projectile_temp = sword2_diagonal2(rotated_sword2)
+
+
                     elif direction == "fireball_vertical":
                         rotated_fireball = pygame.transform.rotate(fireball_image.copy(), 180)
                         projectile_temp = fireball_vertical(rotated_fireball)
                     elif direction == "fireball_horizontal":
                         rotated_fireball = pygame.transform.rotate(fireball_image.copy(), 270)
                         projectile_temp = fireball_horizontal(rotated_fireball)
+
+                    elif direction == "fireball_diagonal":
+                        rotated_fireball = pygame.transform.rotate(fireball_image.copy(), -45)
+                        projectile_temp = fireball_diagonal(rotated_fireball)
+                    elif direction == "fireball_diagonal2":
+                        rotated_fireball = pygame.transform.rotate(fireball_image.copy(), 225)
+                        projectile_temp = fireball_diagonal2(rotated_fireball)
+
+
 
                     projectile_temp.rect = projectile_temp.image.get_rect(center=start_pos)
                     projectiles.add(projectile_temp)
