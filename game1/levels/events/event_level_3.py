@@ -14,17 +14,12 @@ WHITE_RECT_HEIGHT = 500
 
 
 events = [
-    (0.5, 1, (WHITE_RECT_X + WHITE_RECT_WIDTH, WHITE_RECT_Y), "sword2_diagonal2"),
-    (0.5, 1, (WHITE_RECT_X, WHITE_RECT_Y), "sword2_diagonal"),
 
     (1, 1, (WHITE_RECT_X + WHITE_RECT_WIDTH, WHITE_RECT_Y), "dragon1_diagonal2"),
     (1, 1, (WHITE_RECT_X, WHITE_RECT_Y), "dragon1_diagonal"),
 
     (1.5, 1, (WHITE_RECT_X + WHITE_RECT_WIDTH, WHITE_RECT_Y), "chicken_diagonal2"),
     (1.5, 1, (WHITE_RECT_X, WHITE_RECT_Y), "chicken_diagonal"),
-
-    (1.8, 1, (WHITE_RECT_X + WHITE_RECT_WIDTH, WHITE_RECT_Y), "fireball_diagonal2"),
-    (1.8, 1, (WHITE_RECT_X, WHITE_RECT_Y), "fireball_diagonal"),
 
     (1.9, 1, (WHITE_RECT_X + WHITE_RECT_WIDTH, WHITE_RECT_Y), "sword1_diagonal2"),
     (1.9, 1, (WHITE_RECT_X, WHITE_RECT_Y), "sword1_diagonal"),
@@ -35,6 +30,11 @@ events = [
     (2, 1, (WIDTH // 2 + 100, HEIGHT // 2 - 300), "sword1_vertical"),
     (2, 1, (WIDTH // 2 + 150, HEIGHT // 2 - 300), "sword1_vertical"),
     (2, 1, (WIDTH // 2 + 200, HEIGHT // 2 - 300), "sword1_vertical"),
+
+    (2.5, 1, (WIDTH // 2 + 350, HEIGHT // 2 + 60), "sword1_horizontal_right"),
+    (2.5, 1, (WIDTH // 2 + 350, HEIGHT // 2 + 160), "sword1_horizontal_right"),
+    (2.5, 1, (WIDTH // 2 + 350, HEIGHT // 2 + 270), "sword1_horizontal_right"),
+
 
     (3, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 350), "sword1_horizontal_left"),
     (3, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 400), "sword1_horizontal_left"),
@@ -71,5 +71,17 @@ events = [
     (10, 1, (WIDTH // 2-300, HEIGHT // 2+450), "dragon_horizontal"),
 
     (13, 1, (WIDTH // 2 - 50, HEIGHT // 2 - 300), "fireball_vertical"),
-    (13, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 300), "fireball_horizontal")
+    (13, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 300), "fireball_horizontal"),
+
+    (14.5, 1, (WIDTH // 2 + 350, HEIGHT // 2 + 60), "sword1_horizontal_right"),
+    (14.5, 1, (WIDTH // 2 + 350, HEIGHT // 2 + 160), "sword1_horizontal_right"),
+    (14.5, 1, (WIDTH // 2 + 350, HEIGHT // 2 + 300), "sword1_horizontal_right"),
+
+    (15, 1, (WIDTH // 2, HEIGHT // 2 - 300), "sword1_vertical"),
+    (15, 1, (WIDTH // 2 + 50, HEIGHT // 2 - 300), "sword1_vertical"),
+    (15, 1, (WIDTH // 2 + 100, HEIGHT // 2 - 300), "sword1_vertical"),
+    (15, 1, (WIDTH // 2 + 150, HEIGHT // 2 - 300), "sword1_vertical"),
+    (15, 1, (WIDTH // 2 + 200, HEIGHT // 2 - 300), "sword1_vertical"),
+
+
 ]
