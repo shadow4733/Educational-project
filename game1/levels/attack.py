@@ -23,9 +23,6 @@ ATTACK_DAMAGE = {
     "sword2_diagonal2": 0.75,
     "fireball_diagonal": 1.25,
     "fireball_diagonal2": 1.25,
-
-
-
 }
 
 def get_attack_damage(attack_type):
