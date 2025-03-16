@@ -5,23 +5,25 @@ from game1.Player import Player
 from game1.constant.constnants import *
 from game1.levels.attack import sword1_vertical, sword1_horizontal_left, dragon_vertical, get_attack_damage, \
     dragon_horizontal, chicken_vertical, chicken_horizontal, fireball_vertical, fireball_horizontal, \
-    sword2_vertical, sword2_horizontal_left
+    sword2_vertical, sword2_horizontal_left, sword1_diagonal, sword1_diagonal2, dragon1_diagonal2, \
+    dragon1_diagonal, chicken_diagonal2, chicken_diagonal, sword2_diagonal, sword2_diagonal2, fireball_diagonal2, fireball_diagonal, \
+    fireball_horizontal_right, sword1_horizontal_right, sword2_horizontal_right, chicken_horizontal_right, dragon_horizontal_right
 from game1.levels.events.event_level_3 import events
 
 pygame.init()
 
 def start_level():
     """Уровень 1"""
-    pygame.display.set_caption("Уровень 1")
+    pygame.mixer.music.load('sounds/MM 8 bit 2.mp3')
+    pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(0.2)
 
     font = pygame.font.Font(None, 36)
 
-    # Загрузка фонового изображения
-    background = pygame.image.load("../images/bg/menu_background_3.png")
-    background = pygame.transform.scale(background, (WIDTH, HEIGHT))
+    SCREEN.fill(BLACK)
 
     # Отображение текста
-    level_text = font.render("Уровень 1", True, WHITE)
+    level_text = font.render("Уровень 3", True, WHITE)
     level_text_rect = level_text.get_rect(center=(WIDTH // 2, HEIGHT - 950))
 
     # Переменные для здоровья и очков
@@ -40,12 +42,13 @@ def start_level():
     clock = pygame.time.Clock()
     start_time = pygame.time.get_ticks()  # Время начала уровня
 
+    all_projectiles = pygame.sprite.Group() # Создаем группу для хранения всех снарядов
+
     pygame.display.flip()
 
     # Игровой цикл
     waiting = True
     while waiting:
-        SCREEN.blit(background, (0, 0))  # Устанавливаем фон
 
         current_time = (pygame.time.get_ticks() - start_time) / 1000  # Время в секундах
 
@@ -89,36 +92,87 @@ def start_level():
             event_time, num_swords, start_pos, direction = event
             if event_time <= current_time < event_time + 1:
                 for _ in range(num_swords):
+
                     if direction == "sword1_vertical":
                         rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 180)
                         projectile_temp = sword1_vertical(rotated_sword1)
+                    elif direction == "sword1_diagonal":
+                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), -135)
+                        projectile_temp = sword1_diagonal(rotated_sword1)
+                    elif direction == "sword1_diagonal2":
+                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 135)
+                        projectile_temp = sword1_diagonal2(rotated_sword1)
                     elif direction == "sword1_horizontal_left":
                         rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 270)
                         projectile_temp = sword1_horizontal_left(rotated_sword1)
+                    elif direction == "sword1_horizontal_right":
+                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 90)
+                        projectile_temp = sword1_horizontal_right(rotated_sword1)
+
                     elif direction == "dragon_vertical":
                         rotated_dragon = pygame.transform.rotate(dragon_image.copy(), 180)
                         projectile_temp = dragon_vertical(rotated_dragon)
                     elif direction == "dragon_horizontal":
                         rotated_dragon = pygame.transform.rotate(dragon_image.copy(), 270)
                         projectile_temp = dragon_horizontal(rotated_dragon)
+                    elif direction == "dragon_horizontal_right":
+                        rotated_dragon = pygame.transform.rotate(dragon_image.copy(), 90)
+                        projectile_temp = dragon_horizontal_right(rotated_dragon)
+                    elif direction == "dragon1_diagonal":
+                        rotated_dragon = pygame.transform.rotate(dragon_image.copy(), -135)
+                        projectile_temp = dragon1_diagonal(rotated_dragon)
+                    elif direction == "dragon1_diagonal2":
+                        rotated_dragon = pygame.transform.rotate(dragon_image.copy(), 135)
+                        projectile_temp = dragon1_diagonal2(rotated_dragon)
+
                     elif direction == "chicken_vertical":
                         rotated_chicken = pygame.transform.rotate(chicken_image.copy(), 180)
                         projectile_temp = chicken_vertical(rotated_chicken)
                     elif direction == "chicken_horizontal":
                         rotated_chicken = pygame.transform.rotate(chicken_image.copy(), 270)
                         projectile_temp = chicken_horizontal(rotated_chicken)
+                    elif direction == "chicken_horizontal_right":
+                        rotated_chicken = pygame.transform.rotate(chicken_image.copy(), 135)
+                        projectile_temp = chicken_horizontal_right(rotated_chicken)
+                    elif direction == "chicken_diagonal":
+                        rotated_chicken = pygame.transform.rotate(chicken_image.copy(), -135)
+                        projectile_temp = chicken_diagonal(rotated_chicken)
+                    elif direction == "chicken_diagonal2":
+                        rotated_chicken = pygame.transform.rotate(chicken_image.copy(), 135)
+                        projectile_temp = chicken_diagonal2(rotated_chicken)
+
                     elif direction == "sword2_vertical":
                         rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 180)
                         projectile_temp = sword2_vertical(rotated_sword2)
                     elif direction == "sword2_horizontal_left":
                         rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 270)
                         projectile_temp = sword2_horizontal_left(rotated_sword2)
+                    elif direction == "sword2_horizontal_right":
+                        rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 135)
+                        projectile_temp = sword2_horizontal_right(rotated_sword2)
+                    elif direction == "sword2_diagonal":
+                        rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 270)
+                        projectile_temp = sword2_diagonal(rotated_sword2)
+                    elif direction == "sword2_diagonal2":
+                        rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 180)
+                        projectile_temp = sword2_diagonal2(rotated_sword2)
+
                     elif direction == "fireball_vertical":
                         rotated_fireball = pygame.transform.rotate(fireball_image.copy(), 180)
                         projectile_temp = fireball_vertical(rotated_fireball)
                     elif direction == "fireball_horizontal":
                         rotated_fireball = pygame.transform.rotate(fireball_image.copy(), 270)
                         projectile_temp = fireball_horizontal(rotated_fireball)
+                    elif direction == "fireball_horizontal_right":
+                        rotated_fireball = pygame.transform.rotate(fireball_image.copy(), 180)
+                        projectile_temp = fireball_horizontal_right(rotated_fireball)
+
+                    elif direction == "fireball_diagonal":
+                        rotated_fireball = pygame.transform.rotate(fireball_image.copy(), -45)
+                        projectile_temp = fireball_diagonal(rotated_fireball)
+                    elif direction == "fireball_diagonal2":
+                        rotated_fireball = pygame.transform.rotate(fireball_image.copy(), 225)
+                        projectile_temp = fireball_diagonal2(rotated_fireball)
 
                     projectile_temp.rect = projectile_temp.image.get_rect(center=start_pos)
                     projectiles.add(projectile_temp)
@@ -130,6 +184,10 @@ def start_level():
             if (projectile.rect.bottom < 0 or projectile.rect.top > HEIGHT or
                     projectile.rect.right < 0 or projectile.rect.left > WIDTH):
                 projectile.kill()
+
+        # Обновление экрана
+        SCREEN.fill(BLACK)  # Перерисовываем экран
+        SCREEN.blit(level_text, level_text_rect)  # Отображаем текст уровня снова
 
         # Отображение текстовых элементов
         SCREEN.blit(level_text, level_text_rect)

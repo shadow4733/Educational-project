@@ -11,9 +11,7 @@ from game1.levels.events.event_level_3 import events
 pygame.init()
 
 def start_level():
-    """Уровень 1"""
-    pygame.display.set_caption("Уровень 1")
-
+    """Уровень 2"""
     font = pygame.font.Font(None, 36)
     SCREEN.fill(BLACK)
 
