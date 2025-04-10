@@ -80,7 +80,7 @@ def start_level():
         elif player.rect.centery + HERO_SIZE // 2 > HEIGHT // 2 + 495:
             player.rect.centery = HEIGHT // 2 + 495 - HERO_SIZE // 2
 
-        # Загружаем изображения проджектайлов
+        #Загружаем изображения проджектайлов
         sword1_image = pygame.image.load("../images/projectiles/sword1.png")
         dragon_image = pygame.image.load("../images/projectiles/dragon_main.png")
         chicken_image = pygame.image.load("../images/projectiles/chicken.png")
