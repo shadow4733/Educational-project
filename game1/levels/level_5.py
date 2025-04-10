@@ -14,7 +14,7 @@ pygame.init()
 
 
 def start_level():
-    """Уровень 3"""
+    """Уровень 5"""
     pygame.display.set_caption("Уровень 5")
 
 
