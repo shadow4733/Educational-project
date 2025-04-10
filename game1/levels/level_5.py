@@ -12,20 +12,10 @@ from game1.levels.events.event_level_3 import events
 
 pygame.init()
 
-vid = Video("../video/iyambo2.mp4")
-vid.set_size((1920,1080))
-def intro():
-    while True:
-        vid.draw(SCREEN, (0, 0))
-        pygame.display.update()
-        for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                vid.close()
-                start_level()
 
 def start_level():
     """Уровень 3"""
-    pygame.display.set_caption("Уровень 3")
+    pygame.display.set_caption("Уровень 5")
 
 
 
@@ -255,4 +245,4 @@ def start_level():
         clock.tick(FPS)
 
 if __name__ == "__main__":
-    intro()
+    start_level()
