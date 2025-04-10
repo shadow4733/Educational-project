@@ -1,6 +1,6 @@
 import pygame
 import sys
-
+from pyvidplayer import Video
 from game1.Player import Player
 from game1.constant.constnants import *
 from game1.levels.attack import sword1_vertical, sword1_horizontal_left, dragon_vertical, get_attack_damage, \
@@ -12,13 +12,23 @@ from game1.levels.events.event_level_3 import events
 
 pygame.init()
 
+vid = Video("../video/iyambo2.mp4")
+vid.set_size((1920,1080))
+def intro():
+    while True:
+        vid.draw(SCREEN, (0, 0))
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                vid.close()
+                start_level()
+
 def start_level():
     """Уровень 3"""
     pygame.display.set_caption("Уровень 3")
 
-    pygame.mixer.music.load('sounds/MM 8 bit 2.mp3')
-    pygame.mixer.music.play(-1)
-    pygame.mixer.music.set_volume(0.2)
+
+
 
     font = pygame.font.Font(None, 36)
 
@@ -51,6 +61,10 @@ def start_level():
     all_projectiles = pygame.sprite.Group() # Создаем группу для хранения всех снарядов
 
     pygame.display.flip()
+
+    pygame.mixer.music.load('sounds/MM 8 bit 2.mp3')
+    pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(0.2)
 
     # Игровой цикл
     waiting = True
@@ -241,4 +255,4 @@ def start_level():
         clock.tick(FPS)
 
 if __name__ == "__main__":
-    start_level()
+    intro()
