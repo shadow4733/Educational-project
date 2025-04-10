@@ -1,6 +1,6 @@
 import pygame
 import sys
-
+from pyvidplayer import Video
 from game1.Player import Player
 from game1.constant.constnants import *
 from game1.levels.attack import sword1_vertical, sword1_horizontal_left, dragon_vertical, get_attack_damage, \
@@ -14,9 +14,9 @@ pygame.init()
 
 def start_level():
     """Уровень 3"""
-    pygame.mixer.music.load('sounds/MM 8 bit 2.mp3')
-    pygame.mixer.music.play(-1)
-    pygame.mixer.music.set_volume(0.2)
+    pygame.display.set_caption("Уровень 3")
+
+
 
     font = pygame.font.Font(None, 36)
 
@@ -49,6 +49,10 @@ def start_level():
     all_projectiles = pygame.sprite.Group() # Создаем группу для хранения всех снарядов
 
     pygame.display.flip()
+
+    pygame.mixer.music.load('sounds/MM 8 bit 2.mp3')
+    pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(0.2)
 
     # Игровой цикл
     waiting = True
