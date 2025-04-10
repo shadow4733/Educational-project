@@ -1,12 +1,9 @@
 import pygame
 import sys
-
 from game1.constant.constnants import SCREEN, buttons, WHITE, WIDTH, GREEN, BLACK, levels
-from game1.levels import level_1, level_3
-from game1.levels import level_2
-
+from game1.levels import level_1, level_3, level_2, level_4, level_5, level_6
+from game1.levels.pyvidplayer import Video
 pygame.init()
-
 # Инициализация экрана
 pygame.display.set_caption("Главное меню")
 
@@ -86,9 +83,33 @@ def main():
             elif selected_level == "Уровень 2":
                 pygame.mixer.music.pause()
                 level_2.start_level()
+
+
             elif selected_level == "Уровень 3":
                 pygame.mixer.music.pause()
-                level_3.start_level()
+                # vid = Video("../video/iyambo2.mp4")
+                # vid.set_size((1920, 1080))
+                #
+                # def intro():
+                #     while True:
+                #         vid.draw(SCREEN, (0, 0))
+                #         pygame.display.update()
+                #         for event in pygame.event.get():
+                #             if event.type == pygame.MOUSEBUTTONDOWN:
+                #                 vid.close()
+                #                 level_3.start_level()
+                # intro()
+
+
+            elif selected_level == "Уровень 4":
+                pygame.mixer.music.pause()
+                level_4.start_level()
+            elif selected_level == "Уровень 5":
+                pygame.mixer.music.pause()
+                level_5.start_level()
+            elif selected_level == "Уровень 6":
+                pygame.mixer.music.pause()
+                level_6.start_level()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:  # Обработка выхода из игры
