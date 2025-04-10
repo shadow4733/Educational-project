@@ -87,18 +87,18 @@ def main():
 
             elif selected_level == "Уровень 3":
                 pygame.mixer.music.pause()
-                # vid = Video("../video/iyambo2.mp4")
-                # vid.set_size((1920, 1080))
-                #
-                # def intro():
-                #     while True:
-                #         vid.draw(SCREEN, (0, 0))
-                #         pygame.display.update()
-                #         for event in pygame.event.get():
-                #             if event.type == pygame.MOUSEBUTTONDOWN:
-                #                 vid.close()
-                #                 level_3.start_level()
-                # intro()
+                vid = Video("../video/iyambo2.mp4")
+                vid.set_size((1920, 1080))
+
+                def intro():
+                    while True:
+                        vid.draw(SCREEN, (0, 0))
+                        pygame.display.update()
+                        for event in pygame.event.get():
+                            if event.type == pygame.MOUSEBUTTONDOWN:
+                                vid.close()
+                                level_3.start_level()
+                intro()
 
 
             elif selected_level == "Уровень 4":
