@@ -1,5 +1,9 @@
 import pygame
 import sys
+import subprocess
+import os
+
+from os import path
 from pyvidplayer import Video
 from game1.Player import Player
 from game1.constant.constnants import *
@@ -39,6 +43,8 @@ def start_level():
     player = Player()
     play_sprites = pygame.sprite.Group()
     play_sprites.add(player)
+    player_images_right = pygame.image.load("../images/hero/herosprava.png")
+    player_images_left = pygame.image.load("../images/hero/herosleva.png")
 
     # Группа спрайтов-проджектайлов
     projectiles = pygame.sprite.Group()
