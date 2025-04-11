@@ -14,11 +14,13 @@ from game1.levels.attack import sword1_vertical, sword1_horizontal_left, dragon_
     fireball_horizontal_right, sword1_horizontal_right, sword2_horizontal_right, chicken_horizontal_right, dragon_horizontal_right
 from game1.levels.events.event_level_3 import events
 
+
 pygame.init()
 
 current_level = "level_3.py"  # Имя текущего уровня (например, "level_1.py")
 player_health_on_death = 0
 player_score_on_death = 0
+
 def display_game_over_screen(screen, font):
     """Отображает экран 'Игра окончена' с опциями."""
 
@@ -83,6 +85,9 @@ def display_game_over_screen(screen, font):
         screen.blit(main_menu_text, main_menu_text_rect)
 
         pygame.display.flip()
+
+
+
 def start_level():
     """Уровень 3"""
     pygame.display.set_caption("Уровень 3")
@@ -303,11 +308,9 @@ def start_level():
 
         projectiles.update()
         projectiles.draw(SCREEN)
-
         running = True
         # Проверка коллизий
         for projectile in projectiles:
-            if projectile.rect.colliderect(player):
             if projectile.rect.colliderect(player.rect):
                 attack_type = projectile.__class__.__name__.lower()
                 damage = get_attack_damage(attack_type)
