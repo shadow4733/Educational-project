@@ -319,6 +319,10 @@ def start_level():
                 projectile.kill()  # Удаляем снаряд после попадания.
 
                 if health <= 0:
+                    pygame.mixer.music.pause()
+                    pygame.mixer.music.load('sounds/death.mp3')
+                    pygame.mixer.music.play(-1)
+                    pygame.mixer.music.set_volume(0.2)
                     print("игра закончена")
                     player_health_on_death = health
                     player_score_on_death = score
