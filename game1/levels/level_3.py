@@ -304,16 +304,35 @@ def start_level():
         projectiles.update()
         projectiles.draw(SCREEN)
 
+        running = True
         # Проверка коллизий
         for projectile in projectiles:
             if projectile.rect.colliderect(player):
+            if projectile.rect.colliderect(player.rect):
                 attack_type = projectile.__class__.__name__.lower()
                 damage = get_attack_damage(attack_type)
                 health -= damage
                 player.take_damage(damage)
+                projectile.kill()  # Удаляем снаряд после попадания.
+
+                if health <= 0:
+                    print("игра закончена")
+                    player_health_on_death = health
+                    player_score_on_death = score
+                    display_game_over_screen(SCREEN, font)  # Вызываем функцию game over screen
+                    running = False  # Прерываем игровой цикл.
+                    break  # Важно!
+
+
 
         pygame.display.flip()
         clock.tick(FPS)
+        if not running:
+            pygame.time.delay(500)
+            display_game_over_screen(SCREEN, font, "level_3.py", score)
+
+    pygame.quit()
+    sys.exit()
 
 if __name__ == "__main__":
     start_level()
