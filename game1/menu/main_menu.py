@@ -87,7 +87,7 @@ def main():
 
             elif selected_level == "Уровень 3":
                 pygame.mixer.music.pause()
-                vid = Video("../video/iyambo2.mp4")
+                vid = Video("../video/startvideo.mp4")
                 vid.set_size((1920, 1080))
 
                 def intro():
