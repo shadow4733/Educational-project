@@ -2,7 +2,6 @@ import pygame
 import sys
 import subprocess
 import os
-
 from os import path
 from pyvidplayer import Video
 from game1.Player import Player
@@ -239,7 +238,7 @@ def start_level():
                         rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 180)
                         projectile_temp = sword2_vertical(rotated_sword2)
                     elif direction == "sword2_horizontal_left":
-                        rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 270)
+                        rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 315)
                         projectile_temp = sword2_horizontal_left(rotated_sword2)
                     elif direction == "sword2_horizontal_right":
                         rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 135)
@@ -316,17 +315,17 @@ def start_level():
                 damage = get_attack_damage(attack_type)
                 health -= damage
                 player.take_damage(damage)
-                projectile.kill()  # Удаляем снаряд после попадания.
+                projectile.kill()
 
                 if health <= 0:
                     pygame.mixer.music.pause()
-                    pygame.mixer.music.load('sounds/death.mp3')
+                    pygame.mixer.music.load("sounds/death.mp3")
                     pygame.mixer.music.play(-1)
                     pygame.mixer.music.set_volume(0.2)
-                    print("игра закончена")
+                    #print("игра закончена")
                     player_health_on_death = health
                     player_score_on_death = score
-                    display_game_over_screen(SCREEN, font)  # Вызываем функцию game over screen
+                    display_game_over_screen(SCREEN, font)
                     running = False  # Прерываем игровой цикл.
                     break  # Важно!
 
