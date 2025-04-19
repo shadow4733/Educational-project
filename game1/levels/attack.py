@@ -32,6 +32,8 @@ ATTACK_DAMAGE = {
     "fireball_horizontal_right": 20,
     "fireball_diagonal": 20,
     "fireball_diagonal2": 20,
+
+    "bubble_vertical": 3,
 }
 
 def get_attack_damage(attack_type):
@@ -48,6 +50,19 @@ class sword1_vertical(pygame.sprite.Sprite):
 
     def update(self):
         self.rect.y += self.speedy
+        if self.rect.top > HEIGHT + 50:
+            self.speedy = 1
+
+# Спрайт для вертикально летящих пузырей (вверх)
+class bubble_vertical(pygame.sprite.Sprite):
+    def __init__(self, image):
+        super().__init__()
+        self.image = image  # Используем переданное изображение
+        self.rect = self.image.get_rect()
+        self.speedy = 1
+
+    def update(self):
+        self.rect.y -= self.speedy
         if self.rect.top > HEIGHT + 50:
             self.speedy = 1
 
@@ -448,3 +463,4 @@ class fireball_diagonal2(pygame.sprite.Sprite):
         self.rect.x += self.speedx  # Движение по горизонтали
         if self.rect.top > HEIGHT + 50 or self.rect.left < -50 or self.rect.right > WIDTH + 50:  # обработка края экрана
             self.kill()
+
