@@ -96,7 +96,7 @@ def start_level():
         # Загружаем изображения проджектайлов
         sword1_image = pygame.image.load("../images/projectiles/level_1/sword1.png")
         dragon_image = pygame.image.load("../images/projectiles/dragon_main.png")
-        chicken_image = pygame.image.load("../images/projectiles/level_1/chicken.png")
+        chicken_image = pygame.image.load("../images/projectiles/chicken.png")
         sword2_image = pygame.image.load("../images/projectiles/level_1/sword2.png")
         fireball_image = pygame.image.load("../images/projectiles/fireball.gif")
 
