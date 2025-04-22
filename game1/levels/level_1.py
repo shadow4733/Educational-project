@@ -1,9 +1,8 @@
-import pygame
 import sys
 import subprocess
-import os
-from os import path
-from pyvidplayer import Video
+
+import pygame.image
+
 from game1.Player import Player
 from game1.constant.constnants import *
 from game1.levels.attack import sword1_vertical, sword1_horizontal_left, get_attack_damage, chicken_vertical, \
@@ -21,72 +20,60 @@ current_level = "level_1.py"
 player_health_on_death = 0
 player_score_on_death = 0
 
+def draw_text_centered(surface, text, font, color, center):
+    """Отрисовка текста по центру"""
+    text_surface = font.render(text, True, color)
+    text_rect = text_surface.get_rect(center=center)
+    surface.blit(text_surface, text_rect)
+    return text_rect
+
 def display_game_over_screen(screen, font):
-    """Отображает экран 'Игра окончена' с опциями."""
-    game_over_image = pygame.image.load("../images/bg/game_over.png")
-    game_over_rect = game_over_image.get_rect(center=(WIDTH // 2, HEIGHT // 2))
+    """Отображает экран 'Игра окончена' с опциями и возвращает выбранное действие"""
+    background = pygame.image.load("../images/bg/PESHERA.png")
+    background = pygame.transform.scale(background, (WIDTH, HEIGHT))
 
     restart_button_rect = pygame.Rect(WIDTH // 2 - 150, HEIGHT // 2 + 50, 300, 50)
     main_menu_button_rect = pygame.Rect(WIDTH // 2 - 150, HEIGHT // 2 + 120, 300, 50)
-    restart_button_color = WHITE
-    main_menu_button_color = WHITE
-    mouse_pos = pygame.mouse.get_pos()
 
-    if restart_button_rect.collidepoint(mouse_pos):
-        restart_button_color = (200, 200, 200)
-    if main_menu_button_rect.collidepoint(mouse_pos):
-        main_menu_button_color = (200, 200, 200)
+    clock = pygame.time.Clock()
 
-    running = True
-    while running:
+    while True:
+        screen.blit(background, (0, 0))
+        mouse_pos = pygame.mouse.get_pos()
+
+        # Определение цвета кнопок при наведении
+        restart_color = GREEN if restart_button_rect.collidepoint(mouse_pos) else WHITE
+        menu_color = GREEN if main_menu_button_rect.collidepoint(mouse_pos) else WHITE
+
+        # Рисуем кнопки
+        pygame.draw.rect(screen, restart_color, restart_button_rect, border_radius=10)
+        pygame.draw.rect(screen, menu_color, main_menu_button_rect, border_radius=10)
+
+        draw_text_centered(screen, "Повторить", font, BLACK, restart_button_rect.center)
+        draw_text_centered(screen, "Главное меню", font, BLACK, main_menu_button_rect.center)
+
+        pygame.display.flip()
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if restart_button_rect.collidepoint(event.pos):
-                    print("Выйти")
-                    pygame.quit()
-                    sys.exit()
+                    return "restart"
                 elif main_menu_button_rect.collidepoint(event.pos):
-                    print("Главное меню")
-                    try:
-                        subprocess.Popen(["python", "../menu/main_menu.py"])
-                    except FileNotFoundError:
-                        print("Ошибка: main_menu.py не найден.")
+                    return "main_menu"
 
-                    pygame.quit()
-                    sys.exit()
-
-                    running = False
-                    break
-
-        # Отрисовка
-        screen.fill(BLACK)
-        screen.blit(game_over_image, game_over_rect)
-
-        pygame.draw.rect(screen, restart_button_color, restart_button_rect)
-        pygame.draw.rect(screen, main_menu_button_color, main_menu_button_rect)
-
-        restart_text = font.render("Выйти", True, BLACK)
-        main_menu_text = font.render("Главное меню", True, BLACK)
-
-        restart_text_rect = restart_text.get_rect(center=restart_button_rect.center)
-        main_menu_text_rect = main_menu_text.get_rect(center=main_menu_button_rect.center)
-
-        screen.blit(restart_text, restart_text_rect)
-        screen.blit(main_menu_text, main_menu_text_rect)
-
-        pygame.display.flip()
+        clock.tick(60)
 
 def start_level():
     """Уровень 1"""
     pygame.display.set_caption("Уровень 1")
     font = pygame.font.Font(None, 36)
 
-    SCREEN.fill(BLACK)
+    background = pygame.image.load("../images/bg/PESHERA.png")  # Загружаем фон
+    background = pygame.transform.scale(background, (WIDTH, HEIGHT))  # Масштабируем под размер окна
 
-    # Отображение текста
     level_text = font.render("Уровень 1", True, WHITE)
     level_text_rect = level_text.get_rect(center=(WIDTH // 2, HEIGHT - 950))
 
@@ -119,7 +106,7 @@ def start_level():
     # Игровой цикл
     waiting = True
     while waiting:
-        #SCREEN.blit(background, (0, 0))  # Устанавливаем фон
+        SCREEN.blit(background, (0, 0))  # Устанавливаем фон
 
         current_time = (pygame.time.get_ticks() - start_time) / 1000  # Время в секундах
 
@@ -154,11 +141,13 @@ def start_level():
             player.rect.centery = HEIGHT // 2 + 495 - HERO_SIZE // 2
 
         # Загружаем изображения проджектайлов
-        sword1_image = pygame.image.load("../images/projectiles/sword1.png")
-        dragon_image = pygame.image.load("../images/projectiles/dragon_main.png")
-        chicken_image = pygame.image.load("../images/projectiles/chicken.png")
-        sword2_image = pygame.image.load("../images/projectiles/sword2.png")
-        fireball_image = pygame.image.load("../images/projectiles/fireball.gif")
+        chicken_image = pygame.image.load("../images/projectiles/level_1/chicken.png")#chicken
+        dagger_image = pygame.image.load("../images/projectiles/level_1/dagger.png")#dragon
+        gas_image = pygame.image.load("../images/projectiles/level_1/gas.png")#fireball
+        long_sword = pygame.image.load("../images/projectiles/level_1/long_sword.png")
+        sword1_image = pygame.image.load("../images/projectiles/level_1/sword1.png")#sword1
+        sword1_green1_image = pygame.image.load("../images/projectiles/level_1/sword1_green1.png")
+        sword2_image = pygame.image.load("../images/projectiles/level_1/sword2.png")#sword2
 
         # Проверка событий
         for event in events[:]:
@@ -182,7 +171,6 @@ def start_level():
                         rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 90)
                         projectile_temp = sword1_horizontal_right(rotated_sword1)
 
-
                     elif direction == "dragon_vertical":
                         rotated_dragon = pygame.transform.rotate(dragon_image.copy(), 180)
                         projectile_temp = dragon_vertical(rotated_dragon)
@@ -198,8 +186,6 @@ def start_level():
                     elif direction == "dragon1_diagonal2":
                         rotated_dragon = pygame.transform.rotate(dragon_image.copy(), 135)
                         projectile_temp = dragon1_diagonal2(rotated_dragon)
-
-
 
                     elif direction == "chicken_vertical":
                         rotated_chicken = pygame.transform.rotate(chicken_image.copy(), 180)
@@ -217,8 +203,6 @@ def start_level():
                         rotated_chicken = pygame.transform.rotate(chicken_image.copy(), 135)
                         projectile_temp = chicken_diagonal2(rotated_chicken)
 
-
-
                     elif direction == "sword2_vertical":
                         rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 180)
                         projectile_temp = sword2_vertical(rotated_sword2)
@@ -234,7 +218,6 @@ def start_level():
                     elif direction == "sword2_diagonal2":
                         rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 180)
                         projectile_temp = sword2_diagonal2(rotated_sword2)
-
 
                     elif direction == "fireball_vertical":
                         rotated_fireball = pygame.transform.rotate(fireball_image.copy(), 180)
@@ -265,7 +248,6 @@ def start_level():
                 projectile.kill()
 
         # Обновление экрана
-        SCREEN.fill(BLACK)  # Перерисовываем экран
         SCREEN.blit(level_text, level_text_rect)  # Отображаем текст уровня снова
 
         # Отображение текстовых элементов
@@ -306,8 +288,6 @@ def start_level():
                     pygame.mixer.music.play(-1)
                     pygame.mixer.music.set_volume(0.2)
                     #print("игра закончена")
-                    player_health_on_death = health
-                    player_score_on_death = score
                     display_game_over_screen(SCREEN, font)
                     running = False  # Прерываем игровой цикл.
                     break  # Важно!
@@ -316,7 +296,7 @@ def start_level():
         clock.tick(FPS)
         if not running:
             pygame.time.delay(500)
-            display_game_over_screen(SCREEN, font, "level_2.py", score)
+            display_game_over_screen(SCREEN, font, "level_1.py", score)
 
     pygame.quit()
     sys.exit()

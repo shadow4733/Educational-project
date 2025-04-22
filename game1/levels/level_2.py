@@ -166,7 +166,7 @@ def start_level():
         crocodile_image_left = pygame.image.load("../images/projectiles/crocodile_left.png")
         crocodile_image_right = pygame.image.load("../images/projectiles/crocodile_right.png")
         bubble_image = pygame.image.load("../images/projectiles/bubble.png")
-        chicken_image = pygame.image.load("../images/projectiles/chicken.png")
+        chicken_image = pygame.image.load("../images/projectiles/level_1/chicken.png")
 
         # Проверка событий
         for event in events[:]:

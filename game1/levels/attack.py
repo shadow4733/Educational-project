@@ -91,8 +91,6 @@ class sword1_horizontal_right(pygame.sprite.Sprite):
         self.rect.x -= self.speedx
         # Если объект выходит за пределы экрана, сбрасываем его на новое место
 
-
-
 class sword1_diagonal(pygame.sprite.Sprite):
     def __init__(self, image):
         super().__init__()
@@ -122,8 +120,6 @@ class sword1_diagonal2(pygame.sprite.Sprite):
         self.rect.x += self.speedx  # Движение по горизонтали
         if self.rect.top > HEIGHT + 50 or self.rect.left < -50 or self.rect.right > WIDTH + 50: # обработка края экрана
             self.kill()
-
-
 
 # Спрайт для вертикально летящих драконов
 class dragon_vertical(pygame.sprite.Sprite):
@@ -209,8 +205,6 @@ class dragon1_diagonal2(pygame.sprite.Sprite):
         if self.rect.top > HEIGHT + 50 or self.rect.left < -50 or self.rect.right > WIDTH + 50: # обработка края экрана
             self.kill()
 
-
-
 # Спрайт для вертикально летящей курицы
 class chicken_vertical(pygame.sprite.Sprite):
     def __init__(self, image):
@@ -293,8 +287,6 @@ class chicken_diagonal2(pygame.sprite.Sprite):
         self.rect.x += self.speedx  # Движение по горизонтали
         if self.rect.top > HEIGHT + 50 or self.rect.left < -50 or self.rect.right > WIDTH + 50: # обработка края экрана
             self.kill()
-
-
 
 # Спрайт для вертикально летящих мечей2
 class sword2_vertical(pygame.sprite.Sprite):
@@ -463,4 +455,3 @@ class fireball_diagonal2(pygame.sprite.Sprite):
         self.rect.x += self.speedx  # Движение по горизонтали
         if self.rect.top > HEIGHT + 50 or self.rect.left < -50 or self.rect.right > WIDTH + 50:  # обработка края экрана
             self.kill()
-
