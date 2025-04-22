@@ -141,7 +141,7 @@ def start_level():
             player.rect.centery = HEIGHT // 2 + 495 - HERO_SIZE // 2
 
         # Загружаем изображения проджектайлов
-        chicken_image = pygame.image.load("../images/projectiles/level_1/chicken.png")#chicken
+        chicken_image = pygame.image.load("../images/projectiles/chicken.png")#chicken
         dagger_image = pygame.image.load("../images/projectiles/level_1/dagger.png")#dragon
         gas_image = pygame.image.load("../images/projectiles/level_1/gas.png")#fireball
         long_sword = pygame.image.load("../images/projectiles/level_1/long_sword.png")
