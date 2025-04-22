@@ -78,14 +78,7 @@ def main():
             draw_levels()
         elif menu_state == "game":
             if selected_level == "Уровень 1":
-                pygame.mixer.music.pause()
-                level_1.start_level()
-            elif selected_level == "Уровень 2":
-                pygame.mixer.music.pause()
-                level_2.start_level()
 
-
-            elif selected_level == "Уровень 3":
                 pygame.mixer.music.pause()
                 vid = Video("../video/startvideo.mp4")
                 vid.set_size((1920, 1080))
@@ -97,8 +90,17 @@ def main():
                         for event in pygame.event.get():
                             if event.type == pygame.MOUSEBUTTONDOWN:
                                 vid.close()
-                                level_3.start_level()
+                                level_1.start_level()
                 intro()
+
+            elif selected_level == "Уровень 2":
+                pygame.mixer.music.pause()
+                level_2.start_level()
+
+
+            elif selected_level == "Уровень 3":
+                pygame.mixer.music.pause()
+                level_3.start_level()
 
 
             elif selected_level == "Уровень 4":

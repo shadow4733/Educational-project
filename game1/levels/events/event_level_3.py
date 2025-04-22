@@ -272,14 +272,6 @@ events = [
     (58, 1, (WIDTH // 2, HEIGHT // 2 - 300), "fireball_vertical"),
     (58, 1, (WIDTH // 2 - 50, HEIGHT // 2 - 300), "dragon_vertical"),
 
-    # Секунда 59 (2 атаки)
-    (59, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 450), "fireball_horizontal"),
-    (59, 1, (WIDTH // 2 + 350, HEIGHT // 2 + 450), "chicken_horizontal_right"),
-
-    # Секунда 60 (3 атаки)
-    (60, 1, (WHITE_RECT_X, WHITE_RECT_Y), "sword1_diagonal"),
-    (60, 1, (WIDTH // 2 + 50, HEIGHT // 2 - 300), "sword2_vertical"),
-    (60, 1, (WIDTH // 2 - 500, HEIGHT // 2 + 40), "sword1_horizontal_left"),
 
 ]
 
