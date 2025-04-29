@@ -7,7 +7,8 @@ from pyvidplayer import Video
 from game1.Player import Player
 from game1.constant.constnants import *
 from game1.levels.attack import sword1_vertical, sword1_horizontal_left, get_attack_damage, chicken_vertical, \
-    chicken_horizontal, chicken_diagonal2, chicken_diagonal, sword1_horizontal_right, chicken_horizontal_right, bubble_vertical
+    chicken_horizontal, chicken_diagonal2, chicken_diagonal, sword1_horizontal_right, chicken_horizontal_right, \
+    bubble_vertical, sword1_diagonal, sword1_diagonal2
 from game1.levels.events.event_level_2 import events
 
 
@@ -20,7 +21,7 @@ player_score_on_death = 0
 def display_game_over_screen(screen, font):
     """Отображает экран 'Игра окончена' с опциями."""
 
-    game_over_image = pygame.image.load("../images/bg/game_over.png")
+    game_over_image = pygame.image.load("../images/bg/FONvoda-Recovered.png")
     game_over_rect = game_over_image.get_rect(center=(WIDTH // 2, HEIGHT // 2))
 
     restart_button_rect = pygame.Rect(WIDTH // 2 - 150, HEIGHT // 2 + 50, 300, 50)
@@ -86,11 +87,11 @@ def start_level():
 
     font = pygame.font.Font(None, 36)
 
-    SCREEN.fill(BLACK)
+    #SCREEN.fill(BLACK)
 
     # Загрузка фонового изображения
-    #background = pygame.image.load("../images/bg/menu_background_3.png")
-    #background = pygame.transform.scale(background, (WIDTH, HEIGHT))
+    background = pygame.image.load("../images/bg/FONvoda-Recovered.png")
+    background = pygame.transform.scale(background, (WIDTH, HEIGHT))
 
     # Отображение текста
     level_text = font.render("Уровень 2", True, WHITE)
@@ -122,10 +123,12 @@ def start_level():
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.2)
 
+    player.image = player_images_right
     # Игровой цикл
     waiting = True
     while waiting:
-        #SCREEN.blit(background, (0, 0))  # Устанавливаем фон
+        SCREEN.blit(background, (0, 0))  # Устанавливаем фон
+
 
         current_time = (pygame.time.get_ticks() - start_time) / 1000  # Время в секундах
 
@@ -186,6 +189,12 @@ def start_level():
                     elif direction == "bubble_vertical":
                         rotated_bubble = pygame.transform.rotate(bubble_image.copy(), 0)
                         projectile_temp = bubble_vertical(rotated_bubble)
+                    elif direction == "crocodile_diagonal1":
+                        rotated_crocodile = pygame.transform.rotate(crocodile_image_right.copy(), 315)
+                        projectile_temp = sword1_diagonal(rotated_crocodile)
+                    elif direction == "crocodile_diagonal2":
+                        rotated_crocodile = pygame.transform.rotate(crocodile_image_left.copy(), 45)
+                        projectile_temp = sword1_diagonal2(rotated_crocodile)
 
 
 
@@ -220,8 +229,8 @@ def start_level():
                 projectile.kill()
 
          # Обновление экрана
-        SCREEN.fill(BLACK)  # Перерисовываем экран
-        SCREEN.blit(level_text, level_text_rect)  # Отображаем текст уровня снова
+        #SCREEN.fill(BLACK)  # Перерисовываем экран
+        #SCREEN.blit(level_text, level_text_rect)  # Отображаем текст уровня снова
 
         # Отображение текстовых элементов
         SCREEN.blit(level_text, level_text_rect)
