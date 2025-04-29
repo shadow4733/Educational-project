@@ -1,7 +1,7 @@
 from game1.constant.constnants import WIDTH, HEIGHT
 
 events = [
-    # Мечи сверху
+    # Капли сверху
     (2, 1, (WIDTH // 2 - 230, 0), "drop"),
     (2.2, 1, (WIDTH // 2 - 200, 0), "drop"),
     (2.4, 1, (WIDTH // 2 - 170, 0), "drop"),
@@ -16,16 +16,115 @@ events = [
     (4.2, 1, (WIDTH // 2 + 100, 0), "drop"),
     (4.4, 1, (WIDTH // 2 + 130, 0), "drop"),
     (4.6, 1, (WIDTH // 2 + 160, 0), "drop"),
+
+    (5, 1, (WIDTH // 2 - 230, 0), "drop"),
+    (6, 1, (WIDTH // 2 + 100, 0), "drop"),
+    (7, 1, (WIDTH // 2 + 200, 0), "drop"),
+    (8, 1, (WIDTH // 2 - 150, 0), "drop"),
+    (9, 1, (WIDTH // 2 - 50, 0), "drop"),
+    (10, 1, (WIDTH // 2 + 150, 0), "drop"),
+    (11, 1, (WIDTH // 2 + 200, 0), "drop"),
+    (12, 1, (WIDTH // 2 - 100, 0), "drop"),
+    (13, 1, (WIDTH // 2 - 230, 0), "drop"),
+    (14, 1, (WIDTH // 2 + 230, 0), "drop"),
+    (15, 1, (WIDTH // 2 + 150, 0), "drop"),
+    (16, 1, (WIDTH // 2 - 150, 0), "drop"),
+    (17, 1, (WIDTH // 2 + 230, 0), "drop"),
+    (18, 1, (WIDTH // 2 - 200, 0), "drop"),
+    (19, 1, (WIDTH // 2 + 200, 0), "drop"),
+    (20, 1, (WIDTH // 2 - 100, 0), "drop"),
+    (21, 1, (WIDTH // 2 + 230, 0), "drop"),
+    (22, 1, (WIDTH // 2 - 100, 0), "drop"),
+    (23, 1, (WIDTH // 2, 0), "drop"),
+    (24, 1, (WIDTH // 2 - 230, 0), "drop"),
+    (25, 1, (WIDTH // 2 + 150, 0), "drop"),
+    (26, 1, (WIDTH // 2 - 150, 0), "drop"),
+    (27, 1, (WIDTH // 2 + 200, 0), "drop"),
+    (28, 1, (WIDTH // 2 - 230, 0), "drop"),
+    (29, 1, (WIDTH // 2 + 200, 0), "drop"),
+    (30, 1, (WIDTH // 2 - 50, 0), "drop"),
+    (31, 1, (WIDTH // 2 + 100, 0), "drop"),
+    (32, 1, (WIDTH // 2 - 100, 0), "drop"),
+    (33, 1, (WIDTH // 2 + 150, 0), "drop"),
+    (34, 1, (WIDTH // 2 - 230, 0), "drop"),
+    (35, 1, (WIDTH // 2 + 50, 0), "drop"),
+    (36, 1, (WIDTH // 2 - 200, 0), "drop"),
+    (37, 1, (WIDTH // 2 + 150, 0), "drop"),
+    (38, 1, (WIDTH // 2 - 230, 0), "drop"),
+    (39, 1, (WIDTH // 2 + 150, 0), "drop"),
+    (40, 1, (WIDTH // 2 - 230, 0), "drop"),
+    (41, 1, (WIDTH // 2 + 230, 0), "drop"),
+    (42, 1, (WIDTH // 2 - 100, 0), "drop"),
+    (43, 1, (WIDTH // 2 + 50, 0), "drop"),
+    (44, 1, (WIDTH // 2 - 150, 0), "drop"),
+    (45, 1, (WIDTH // 2 + 50, 0), "drop"),
+    (46, 1, (WIDTH // 2, 0), "drop"),
+    (47, 1, (WIDTH // 2 + 230, 0), "drop"),
+    (48, 1, (WIDTH // 2 - 230, 0), "drop"),
+    (49, 1, (WIDTH // 2 + 150, 0), "drop"),
+    (50, 1, (WIDTH // 2 - 150, 0), "drop"),
+    (51, 1, (WIDTH // 2 + 150, 0), "drop"),
+    (52, 1, (WIDTH // 2 - 50, 0), "drop"),
+    (53, 1, (WIDTH // 2, 0), "drop"),
+    (54, 1, (WIDTH // 2 - 50, 0), "drop"),
+    (55, 1, (WIDTH // 2 + 50, 0), "drop"),
+    (56, 1, (WIDTH // 2 - 150, 0), "drop"),
+
     ###
-    # Мечи справа налево
+    # Крокодилы справа налево
     (2, 1, (WIDTH, HEIGHT // 2 + 30), "crocodile_right"),
     (2.2, 1, (WIDTH, HEIGHT // 2 + 60), "crocodile_right"),
     (2.4, 1, (WIDTH, HEIGHT // 2 + 90), "crocodile_right"),
     (2.6, 1, (WIDTH, HEIGHT // 2 + 120), "crocodile_right"),
     (2.8, 1, (WIDTH, HEIGHT // 2 + 150), "crocodile_right"),
     (3, 1, (WIDTH, HEIGHT // 2 + 180), "crocodile_right"),
+
+    (5, 1, (WIDTH, HEIGHT // 2 + 100), "crocodile_right"),
+    (5.5, 1, (WIDTH, HEIGHT // 2 + 150), "crocodile_right"),
+    (6, 1, (WIDTH, HEIGHT // 2 + 200), "crocodile_right"),
+    (6.5, 1, (WIDTH, HEIGHT // 2 + 250), "crocodile_right"),
+    (7, 1, (WIDTH, HEIGHT // 2 + 300), "crocodile_right"),
+    (7.5, 1, (WIDTH, HEIGHT // 2 + 350), "crocodile_right"),
+    (8, 1, (WIDTH, HEIGHT // 2 + 400), "crocodile_right"),
+    (8.5, 1, (WIDTH, HEIGHT // 2 + 450), "crocodile_right"),
+
+    (13.2, 1, (WIDTH, HEIGHT // 2 + 350), "crocodile_right"),
+    (13.4, 1, (WIDTH, HEIGHT // 2 + 200), "crocodile_right"),
+    (13.6, 1, (WIDTH, HEIGHT // 2 + 50), "crocodile_right"),
+
+    (18.2, 1, (WIDTH, HEIGHT // 2 + 400), "crocodile_right"),
+    (18.4, 1, (WIDTH, HEIGHT // 2 + 350), "crocodile_right"),
+    (18.6, 1, (WIDTH, HEIGHT // 2 + 100), "crocodile_right"),
+
+    (23.2, 1, (WIDTH, HEIGHT // 2 + 300), "crocodile_right"),
+    (23.4, 1, (WIDTH, HEIGHT // 2 + 350), "crocodile_right"),
+    (23.6, 1, (WIDTH, HEIGHT // 2 + 400), "crocodile_right"),
+
+    (28.2, 1, (WIDTH, HEIGHT // 2 + 400), "crocodile_right"),
+    (28.4, 1, (WIDTH, HEIGHT // 2 + 150), "crocodile_right"),
+    (28.6, 1, (WIDTH, HEIGHT // 2 + 250), "crocodile_right"),
+
+    (33.2, 1, (WIDTH, HEIGHT // 2 + 300), "crocodile_right"),
+    (33.4, 1, (WIDTH, HEIGHT // 2 + 350), "crocodile_right"),
+    (33.6, 1, (WIDTH, HEIGHT // 2 + 400), "crocodile_right"),
+
+    (38.2, 1, (WIDTH, HEIGHT // 2 + 200), "crocodile_right"),
+    (38.4, 1, (WIDTH, HEIGHT // 2 + 300), "crocodile_right"),
+    (38.6, 1, (WIDTH, HEIGHT // 2 + 400), "crocodile_right"),
+
+    (43.2, 1, (WIDTH, HEIGHT // 2 + 100), "crocodile_right"),
+    (43.4, 1, (WIDTH, HEIGHT // 2 + 200), "crocodile_right"),
+    (43.6, 1, (WIDTH, HEIGHT // 2 + 300), "crocodile_right"),
+
+    (48.2, 1, (WIDTH, HEIGHT // 2 + 50), "crocodile_right"),
+    (48.4, 1, (WIDTH, HEIGHT // 2 + 100), "crocodile_right"),
+    (48.6, 1, (WIDTH, HEIGHT // 2 + 150), "crocodile_right"),
+
+    (53.2, 1, (WIDTH, HEIGHT // 2 + 300), "crocodile_right"),
+    (53.4, 1, (WIDTH, HEIGHT // 2 + 350), "crocodile_right"),
+    (53.6, 1, (WIDTH, HEIGHT // 2 + 400), "crocodile_right"),
     ###
-    # Мечи слева направо
+    # Крокодилы слева направо
     (2.6, 1, (0, HEIGHT // 2 + 470), "crocodile_left"),
     (2.8, 1, (0, HEIGHT // 2 + 440), "crocodile_left"),
     (3, 1, (0, HEIGHT // 2 + 410), "crocodile_left"),
@@ -33,6 +132,132 @@ events = [
     (3.4, 1, (0, HEIGHT // 2 + 350), "crocodile_left"),
     (3.6, 1, (0, HEIGHT // 2 + 320), "crocodile_left"),
 
+    (5, 1, (0, HEIGHT // 2 + 450), "crocodile_left"),
+    (5.5, 1, (0, HEIGHT // 2 + 400), "crocodile_left"),
+    (6, 1, (0, HEIGHT // 2 + 350), "crocodile_left"),
+    (6.5, 1, (0, HEIGHT // 2 + 300), "crocodile_left"),
+    (7, 1, (0, HEIGHT // 2 + 250), "crocodile_left"),
+    (7.5, 1, (0, HEIGHT // 2 + 200), "crocodile_left"),
+    (8, 1, (0, HEIGHT // 2 + 150), "crocodile_left"),
+    (8.5, 1, (0, HEIGHT // 2 + 100), "crocodile_left"),
+
+    (15.2, 1, (0, HEIGHT // 2 + 350), "crocodile_left"),
+    (15.4, 1, (0, HEIGHT // 2 + 300), "crocodile_left"),
+    (15.6, 1, (0, HEIGHT // 2 + 250), "crocodile_left"),
+
+    (20.2, 1, (0, HEIGHT // 2 + 350), "crocodile_left"),
+    (20.4, 1, (0, HEIGHT // 2 + 300), "crocodile_left"),
+    (20.6, 1, (0, HEIGHT // 2 + 250), "crocodile_left"),
+
+    (25, 1, (0, HEIGHT // 2 + 350), "crocodile_left"),
+    (25, 1, (0, HEIGHT // 2 + 200), "crocodile_left"),
+    (25, 1, (0, HEIGHT // 2 + 50), "crocodile_left"),
+
+    (30.2, 1, (0, HEIGHT // 2 + 450), "crocodile_left"),
+    (30.4, 1, (0, HEIGHT // 2 + 400), "crocodile_left"),
+    (30.6, 1, (0, HEIGHT // 2 + 350), "crocodile_left"),
+
+    (35.2, 1, (0, HEIGHT // 2 + 200), "crocodile_left"),
+    (35.4, 1, (0, HEIGHT // 2 + 250), "crocodile_left"),
+    (35.6, 1, (0, HEIGHT // 2 + 300), "crocodile_left"),
+
+    (40.2, 1, (0, HEIGHT // 2 + 150), "crocodile_left"),
+    (40.4, 1, (0, HEIGHT // 2 + 100), "crocodile_left"),
+    (40.6, 1, (0, HEIGHT // 2 + 50), "crocodile_left"),
+
+    (45.2, 1, (0, HEIGHT // 2 + 300), "crocodile_left"),
+    (45.4, 1, (0, HEIGHT // 2 + 250), "crocodile_left"),
+    (45.6, 1, (0, HEIGHT // 2 + 200), "crocodile_left"),
+
+    (50.2, 1, (0, HEIGHT // 2 + 350), "crocodile_left"),
+    (50.4, 1, (0, HEIGHT // 2 + 300), "crocodile_left"),
+    (50.6, 1, (0, HEIGHT // 2 + 250), "crocodile_left"),
+
+    (55.2, 1, (0, HEIGHT // 2 + 200), "crocodile_left"),
+    (55.4, 1, (0, HEIGHT // 2 + 300), "crocodile_left"),
+    (55.6, 1, (0, HEIGHT // 2 + 400), "crocodile_left"),
+
+    # Крокодилы по диагонали (слева направо)
+    (12, 1, (200, 0), "crocodile_diagonal1"),
+    (12.2, 1, (300, 0), "crocodile_diagonal1"),
+    (12.4, 1, (400, 0), "crocodile_diagonal1"),
+
+    (18, 1, (-300, 0), "crocodile_diagonal1"),
+    (18.2, 1, (-200, 0), "crocodile_diagonal1"),
+    (18.4, 1, (-100, 0), "crocodile_diagonal1"),
+
+    (23, 1, (100, 0), "crocodile_diagonal1"),
+    (23.2, 1, (300, 0), "crocodile_diagonal1"),
+    (23.4, 1, (500, 0), "crocodile_diagonal1"),
+
+    (28, 1, (200, 0), "crocodile_diagonal1"),
+    (28.2, 1, (300, 0), "crocodile_diagonal1"),
+    (28.4, 1, (400, 0), "crocodile_diagonal1"),
+
+    (33, 1, (150, 0), "crocodile_diagonal1"),
+    (33.2, 1, (200, 0), "crocodile_diagonal1"),
+    (33.4, 1, (250, 0), "crocodile_diagonal1"),
+
+    (38, 1, (50, 0), "crocodile_diagonal1"),
+    (38.2, 1, (100, 0), "crocodile_diagonal1"),
+    (38.4, 1, (150, 0), "crocodile_diagonal1"),
+
+    (43, 1, (200, 0), "crocodile_diagonal1"),
+    (43.2, 1, (250, 0), "crocodile_diagonal1"),
+    (43.4, 1, (300, 0), "crocodile_diagonal1"),
+
+    (48, 1, (50, 0), "crocodile_diagonal1"),
+    (48.2, 1, (150, 0), "crocodile_diagonal1"),
+    (48.4, 1, (250, 0), "crocodile_diagonal1"),
+
+    (53, 1, (50, 0), "crocodile_diagonal1"),
+    (53.2, 1, (200, 0), "crocodile_diagonal1"),
+    (53.4, 1, (350, 0), "crocodile_diagonal1"),
+
+    (58, 1, (200, 0), "crocodile_diagonal1"),
+    (58.2, 1, (250, 0), "crocodile_diagonal1"),
+    (58.4, 1, (300, 0), "crocodile_diagonal1"),
+
+    # Крокодилы по диагонали (справа налево)
+    (10, 1, (1700, 0), "crocodile_diagonal2"),
+    (10.2, 1, (1800, 0), "crocodile_diagonal2"),
+    (10.4, 1, (1900, 0), "crocodile_diagonal2"),
+
+    (16, 1, (1400, 0), "crocodile_diagonal2"),
+    (16.2, 1, (1500, 0), "crocodile_diagonal2"),
+    (16.4, 1, (1600, 0), "crocodile_diagonal2"),
+
+    (20, 1, (1500, 0), "crocodile_diagonal2"),
+    (20.2, 1, (1600, 0), "crocodile_diagonal2"),
+    (20.4, 1, (1700, 0), "crocodile_diagonal2"),
+
+    (26, 1, (1500, 0), "crocodile_diagonal2"),
+    (26.2, 1, (1700, 0), "crocodile_diagonal2"),
+    (26.4, 1, (1900, 0), "crocodile_diagonal2"),
+
+    (30, 1, (1700, 0), "crocodile_diagonal2"),
+    (30.2, 1, (1800, 0), "crocodile_diagonal2"),
+    (30.4, 1, (1900, 0), "crocodile_diagonal2"),
+
+    (36, 1, (1400, 0), "crocodile_diagonal2"),
+    (36.2, 1, (1600, 0), "crocodile_diagonal2"),
+    (36.4, 1, (1800, 0), "crocodile_diagonal2"),
+
+    (40, 1, (1500, 0), "crocodile_diagonal2"),
+    (40.2, 1, (1600, 0), "crocodile_diagonal2"),
+    (40.4, 1, (1700, 0), "crocodile_diagonal2"),
+
+    (46, 1, (1600, 0), "crocodile_diagonal2"),
+    (46.2, 1, (1500, 0), "crocodile_diagonal2"),
+    (46.4, 1, (1400, 0), "crocodile_diagonal2"),
+
+    (50, 1, (1500, 0), "crocodile_diagonal2"),
+    (50.2, 1, (1700, 0), "crocodile_diagonal2"),
+    (50.4, 1, (1900, 0), "crocodile_diagonal2"),
+
+    (56, 1, (1800, 0), "crocodile_diagonal2"),
+    (56.2, 1, (1600, 0), "crocodile_diagonal2"),
+    (56.4, 1, (1400, 0), "crocodile_diagonal2"),
     # Пузыри
     (3.4, 1, (WIDTH // 2 - 200, HEIGHT), "bubble_vertical"),
     (3.5, 1, (WIDTH // 2 - 10, HEIGHT), "bubble_vertical"),
@@ -50,4 +275,76 @@ events = [
     (6.5, 1, (WIDTH // 2 + 10, HEIGHT), "bubble_vertical"),
     (6.7, 1, (WIDTH // 2 + 180, HEIGHT), "bubble_vertical"),
 
+    (8.3, 1, (WIDTH // 2 - 70, HEIGHT), "bubble_vertical"),
+    (8.5, 1, (WIDTH // 2 - 120, HEIGHT), "bubble_vertical"),
+    (8.2, 1, (WIDTH // 2 + 200, HEIGHT), "bubble_vertical"),
+    (8.8, 1, (WIDTH // 2 - 20, HEIGHT), "bubble_vertical"),
+    (9, 1, (WIDTH // 2 + 30, HEIGHT), "bubble_vertical"),
+    (8.7, 1, (WIDTH // 2 + 80, HEIGHT), "bubble_vertical"),
+    (8.5, 1, (WIDTH // 2 + 180, HEIGHT), "bubble_vertical"),
+
+    (10, 1, (WIDTH // 2 + 140, HEIGHT), "bubble_vertical"),
+    (10.2, 1, (WIDTH // 2 + 70, HEIGHT), "bubble_vertical"),
+    (10.3, 1, (WIDTH // 2 + 200, HEIGHT), "bubble_vertical"),
+    (10.4, 1, (WIDTH // 2 - 50, HEIGHT), "bubble_vertical"),
+    (10.5, 1, (WIDTH // 2 + 30, HEIGHT), "bubble_vertical"),
+    (10.6, 1, (WIDTH // 2 - 10, HEIGHT), "bubble_vertical"),
+    (10.8, 1, (WIDTH // 2 - 180, HEIGHT), "bubble_vertical"),
+
+    (12, 1, (WIDTH // 2 - 70, HEIGHT), "bubble_vertical"),
+    (12.2, 1, (WIDTH // 2 - 140, HEIGHT), "bubble_vertical"),
+    (12.4, 1, (WIDTH // 2 + 100, HEIGHT), "bubble_vertical"),
+    (12.5, 1, (WIDTH // 2 + 50, HEIGHT), "bubble_vertical"),
+    (12.6, 1, (WIDTH // 2 - 100, HEIGHT), "bubble_vertical"),
+    (12.7, 1, (WIDTH // 2 + 10, HEIGHT), "bubble_vertical"),
+    (12.8, 1, (WIDTH // 2 + 200, HEIGHT), "bubble_vertical"),
+
+    ###
+    (25, 1, (WIDTH // 2 - 200, HEIGHT), "bubble_vertical"),
+    (25.2, 1, (WIDTH // 2 - 140, HEIGHT), "bubble_vertical"),
+    (25.3, 1, (WIDTH // 2 + 100, HEIGHT), "bubble_vertical"),
+    (25.4, 1, (WIDTH // 2 + 50, HEIGHT), "bubble_vertical"),
+    (25.5, 1, (WIDTH // 2 - 100, HEIGHT), "bubble_vertical"),
+    (25.6, 1, (WIDTH // 2 + 10, HEIGHT), "bubble_vertical"),
+    (25.7, 1, (WIDTH // 2 + 200, HEIGHT), "bubble_vertical"),
+
+    (28, 1, (WIDTH // 2 + 170, HEIGHT), "bubble_vertical"),
+    (28.2, 1, (WIDTH // 2 - 140, HEIGHT), "bubble_vertical"),
+    (28.3, 1, (WIDTH // 2 + 130, HEIGHT), "bubble_vertical"),
+    (28.4, 1, (WIDTH // 2, HEIGHT), "bubble_vertical"),
+    (28.5, 1, (WIDTH // 2 - 100, HEIGHT), "bubble_vertical"),
+    (28.6, 1, (WIDTH // 2 + 80, HEIGHT), "bubble_vertical"),
+    (28.7, 1, (WIDTH // 2 + 20, HEIGHT), "bubble_vertical"),
+
+    (31.1, 1, (WIDTH // 2 - 70, HEIGHT), "bubble_vertical"),
+    (31.2, 1, (WIDTH // 2 - 140, HEIGHT), "bubble_vertical"),
+    (31.4, 1, (WIDTH // 2 + 100, HEIGHT), "bubble_vertical"),
+    (31.5, 1, (WIDTH // 2 + 50, HEIGHT), "bubble_vertical"),
+    (31.6, 1, (WIDTH // 2 - 100, HEIGHT), "bubble_vertical"),
+    (31.7, 1, (WIDTH // 2 + 10, HEIGHT), "bubble_vertical"),
+    (31.8, 1, (WIDTH // 2 + 200, HEIGHT), "bubble_vertical"),
+    ###
+
+    (45.1, 1, (WIDTH // 2 - 200, HEIGHT), "bubble_vertical"),
+    (45.2, 1, (WIDTH // 2 - 140, HEIGHT), "bubble_vertical"),
+    (45.4, 1, (WIDTH // 2 + 100, HEIGHT), "bubble_vertical"),
+    (45.5, 1, (WIDTH // 2 + 50, HEIGHT), "bubble_vertical"),
+    (45.6, 1, (WIDTH // 2 - 80, HEIGHT), "bubble_vertical"),
+    (45.7, 1, (WIDTH // 2 + 160, HEIGHT), "bubble_vertical"),
+    (45.8, 1, (WIDTH // 2, HEIGHT), "bubble_vertical"),
+
+    (50.1, 1, (WIDTH // 2 + 200, HEIGHT), "bubble_vertical"),
+    (50.2, 1, (WIDTH // 2 + 140, HEIGHT), "bubble_vertical"),
+    (50.4, 1, (WIDTH // 2 + 100, HEIGHT), "bubble_vertical"),
+    (50.5, 1, (WIDTH // 2 + 50, HEIGHT), "bubble_vertical"),
+    (50.6, 1, (WIDTH // 2 - 80, HEIGHT), "bubble_vertical"),
+    (50.7, 1, (WIDTH // 2 - 160, HEIGHT), "bubble_vertical"),
+    (50.8, 1, (WIDTH // 2 - 10, HEIGHT), "bubble_vertical"),
+
+    (55.1, 1, (WIDTH // 2 - 200, HEIGHT), "bubble_vertical"),
+    (55.2, 1, (WIDTH // 2 - 100, HEIGHT), "bubble_vertical"),
+    (55.4, 1, (WIDTH // 2 + 100, HEIGHT), "bubble_vertical"),
+    (55.5, 1, (WIDTH // 2 + 50, HEIGHT), "bubble_vertical"),
+    (55.6, 1, (WIDTH // 2 - 80, HEIGHT), "bubble_vertical"),
+    (55.7, 1, (WIDTH // 2 + 160, HEIGHT), "bubble_vertical"),
 ]
