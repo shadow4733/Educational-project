@@ -169,11 +169,11 @@ def start_level():
 
 
         # Загружаем изображения проджектайлов
-        sword1_image = pygame.image.load("../images/projectiles/level_1/sword1.png")
-        dragon_image = pygame.image.load("../images/projectiles/dragon_main.png")
+        sword1_image = pygame.image.load("../images/projectiles/general/sword1.png")
+        dragon_image = pygame.image.load("../images/projectiles/general/dragon_main.png")
         chicken_image = pygame.image.load("../images/projectiles/general/chicken.png")
         sword2_image = pygame.image.load("../images/projectiles/level_1/sword2.png")
-        fireball_image = pygame.image.load("../images/projectiles/fireball.gif")
+        fireball_image = pygame.image.load("../images/projectiles/general/fireball.gif")
 
         # Проверка событий
         for event in events[:]:

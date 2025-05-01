@@ -146,8 +146,8 @@ def start_level():
         chicken_image = pygame.image.load("../images/projectiles/general/chicken.png")#chicken
         dagger_image = pygame.image.load("../images/projectiles/level_1/dagger.png")#bubble_vertical
         gas_image = pygame.image.load("../images/projectiles/level_1/gas.png")#gas
-        long_sword = pygame.image.load("../images/projectiles/level_1/long_sword.png")#long_sword
-        sword1_image = pygame.image.load("../images/projectiles/level_1/sword1.png")#sword1
+        long_sword = pygame.image.load("../images/projectiles/general/long_sword.png")#long_sword
+        sword1_image = pygame.image.load("../images/projectiles/general/sword1.png")#sword1
         sword2_image = pygame.image.load("../images/projectiles/level_1/sword2.png")#sword2
 
         # Проверка событий
