@@ -18,10 +18,6 @@ from game1.levels.events.event_level_1 import events
 
 pygame.init()
 
-current_level = "level_1.py"
-player_health_on_death = 0
-player_score_on_death = 0
-
 def draw_text_centered(surface, text, font, color, center):
     """Отрисовка текста по центру"""
     text_surface = font.render(text, True, color)
@@ -62,9 +58,10 @@ def display_game_over_screen(screen, font):
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if restart_button_rect.collidepoint(event.pos):
-                    return "restart"
+                    start_level()
                 elif main_menu_button_rect.collidepoint(event.pos):
-                    return "main_menu"
+                    from game1.menu import main_menu
+                    main_menu.main()
 
         clock.tick(60)
 

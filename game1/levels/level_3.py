@@ -16,82 +16,57 @@ from game1.levels.events.event_level_3 import events
 
 pygame.init()
 
-current_level = "level_3.py"  # Имя текущего уровня (например, "level_1.py")
-player_health_on_death = 0
-player_score_on_death = 0
+def draw_text_centered(surface, text, font, color, center):
+    """Отрисовка текста по центру"""
+    text_surface = font.render(text, True, color)
+    text_rect = text_surface.get_rect(center=center)
+    surface.blit(text_surface, text_rect)
+    return text_rect
 
 def display_game_over_screen(screen, font):
-    """Отображает экран 'Игра окончена' с опциями."""
-
-    game_over_image = pygame.image.load("../images/bg/game_over.png")  # Замените "game_over.png" на имя вашего файла.
-    game_over_rect = game_over_image.get_rect(center=(WIDTH // 2, HEIGHT // 2))  # Positioned slightly above the buttons
+    """Отображает экран 'Игра окончена' с опциями и возвращает выбранное действие"""
+    background = pygame.image.load("../images/bg/level_3.png")
+    background = pygame.transform.scale(background, (WIDTH, HEIGHT))
 
     restart_button_rect = pygame.Rect(WIDTH // 2 - 150, HEIGHT // 2 + 50, 300, 50)
     main_menu_button_rect = pygame.Rect(WIDTH // 2 - 150, HEIGHT // 2 + 120, 300, 50)
-    restart_button_color = WHITE
-    main_menu_button_color = WHITE
-    mouse_pos = pygame.mouse.get_pos()
 
-    if restart_button_rect.collidepoint(mouse_pos):
-        restart_button_color = (200, 200, 200)
-    if main_menu_button_rect.collidepoint(mouse_pos):
-        main_menu_button_color = (200, 200, 200)
+    clock = pygame.time.Clock()
 
-    running = True
-    while running:
+    while True:
+        screen.blit(background, (0, 0))
+        mouse_pos = pygame.mouse.get_pos()
+
+        # Определение цвета кнопок при наведении
+        restart_color = GREEN if restart_button_rect.collidepoint(mouse_pos) else WHITE
+        menu_color = GREEN if main_menu_button_rect.collidepoint(mouse_pos) else WHITE
+
+        # Рисуем кнопки
+        pygame.draw.rect(screen, restart_color, restart_button_rect, border_radius=10)
+        pygame.draw.rect(screen, menu_color, main_menu_button_rect, border_radius=10)
+
+        draw_text_centered(screen, "Повторить", font, BLACK, restart_button_rect.center)
+        draw_text_centered(screen, "Главное меню", font, BLACK, main_menu_button_rect.center)
+
+        pygame.display.flip()
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if restart_button_rect.collidepoint(event.pos):
-                    print("Выйти")
-                    pygame.quit()
-                    sys.exit()
-
-
+                    start_level()
                 elif main_menu_button_rect.collidepoint(event.pos):
-                    print("Главное меню")
-                    # Запуск main_menu.py
-                    #Вариант 1:
-                    try:
-                        subprocess.Popen(["python", "../menu/main_menu.py"])
-                    except FileNotFoundError:
-                        print("Ошибка: main_menu.py не найден.")
+                    from game1.menu import main_menu
+                    main_menu.main()
 
-                    pygame.quit()
-                    sys.exit()
-                    #Вариант 2:
-                    #os.system("python main_menu.py")
-
-                    running = False # Выход из цикла game over screen
-                    break # Добавляем break, чтобы не переходить к restart случайно
-
-        # Отрисовка
-        screen.fill(BLACK)
-        screen.blit(game_over_image, game_over_rect)
-
-        pygame.draw.rect(screen, restart_button_color, restart_button_rect)
-        pygame.draw.rect(screen, main_menu_button_color, main_menu_button_rect)
-
-        restart_text = font.render("Выйти", True, BLACK)
-        main_menu_text = font.render("Главное меню", True, BLACK)
-
-        restart_text_rect = restart_text.get_rect(center=restart_button_rect.center)
-        main_menu_text_rect = main_menu_text.get_rect(center=main_menu_button_rect.center)
-
-        screen.blit(restart_text, restart_text_rect)
-        screen.blit(main_menu_text, main_menu_text_rect)
-
-        pygame.display.flip()
-
+        clock.tick(60)
 
 
 def start_level():
     """Уровень 3"""
     pygame.display.set_caption("Уровень 3")
-
-
 
     font = pygame.font.Font(None, 36)
 

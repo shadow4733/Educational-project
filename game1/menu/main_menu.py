@@ -97,18 +97,18 @@ def main():
                 pygame.mixer.music.pause()
                 level_2.start_level()
 
-
             elif selected_level == "Уровень 3":
                 pygame.mixer.music.pause()
                 level_3.start_level()
 
-
             elif selected_level == "Уровень 4":
                 pygame.mixer.music.pause()
                 level_4.start_level()
+
             elif selected_level == "Уровень 5":
                 pygame.mixer.music.pause()
                 level_5.start_level()
+
             elif selected_level == "Уровень 6":
                 pygame.mixer.music.pause()
                 level_6.start_level()
