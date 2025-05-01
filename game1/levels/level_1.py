@@ -31,7 +31,7 @@ def draw_text_centered(surface, text, font, color, center):
 
 def display_game_over_screen(screen, font):
     """Отображает экран 'Игра окончена' с опциями и возвращает выбранное действие"""
-    background = pygame.image.load("../images/bg/PESHERA.png")
+    background = pygame.image.load("../images/bg/level_1.png")
     background = pygame.transform.scale(background, (WIDTH, HEIGHT))
 
     restart_button_rect = pygame.Rect(WIDTH // 2 - 150, HEIGHT // 2 + 50, 300, 50)
@@ -73,7 +73,7 @@ def start_level():
     pygame.display.set_caption("Уровень 1")
     font = pygame.font.Font(None, 36)
 
-    background = pygame.image.load("../images/bg/PESHERA.png")  # Загружаем фон
+    background = pygame.image.load("../images/bg/level_1.png")  # Загружаем фон
     background = pygame.transform.scale(background, (WIDTH, HEIGHT))  # Масштабируем под размер окна
 
     level_text = font.render("Уровень 1", True, WHITE)
@@ -143,7 +143,7 @@ def start_level():
             player.rect.centery = HEIGHT // 2 + 495 - HERO_SIZE // 2
 
         # Загружаем изображения проджектайлов
-        chicken_image = pygame.image.load("../images/projectiles/chicken.png")#chicken
+        chicken_image = pygame.image.load("../images/projectiles/general/chicken.png")#chicken
         dagger_image = pygame.image.load("../images/projectiles/level_1/dagger.png")#bubble_vertical
         gas_image = pygame.image.load("../images/projectiles/level_1/gas.png")#gas
         long_sword = pygame.image.load("../images/projectiles/level_1/long_sword.png")#long_sword

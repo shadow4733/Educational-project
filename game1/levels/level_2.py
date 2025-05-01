@@ -21,7 +21,7 @@ player_score_on_death = 0
 def display_game_over_screen(screen, font):
     """Отображает экран 'Игра окончена' с опциями."""
 
-    game_over_image = pygame.image.load("../images/bg/FONvoda-Recovered.png")
+    game_over_image = pygame.image.load("../images/bg/level_2.png")
     game_over_rect = game_over_image.get_rect(center=(WIDTH // 2, HEIGHT // 2))
 
     restart_button_rect = pygame.Rect(WIDTH // 2 - 150, HEIGHT // 2 + 50, 300, 50)
@@ -90,7 +90,7 @@ def start_level():
     #SCREEN.fill(BLACK)
 
     # Загрузка фонового изображения
-    background = pygame.image.load("../images/bg/FONvoda-Recovered.png")
+    background = pygame.image.load("../images/bg/level_2.png")
     background = pygame.transform.scale(background, (WIDTH, HEIGHT))
 
     # Отображение текста
@@ -165,11 +165,11 @@ def start_level():
 
 
         # Загружаем изображения проджектайлов
-        drop_image = pygame.image.load("../images/projectiles/drop.png")
-        crocodile_image_left = pygame.image.load("../images/projectiles/crocodile_left.png")
-        crocodile_image_right = pygame.image.load("../images/projectiles/crocodile_right.png")
-        bubble_image = pygame.image.load("../images/projectiles/bubble.png")
-        chicken_image = pygame.image.load("../images/projectiles/chicken.png")
+        drop_image = pygame.image.load("../images/projectiles/level_2/drop.png")
+        crocodile_image_left = pygame.image.load("../images/projectiles/level_2/crocodile_left.png")
+        crocodile_image_right = pygame.image.load("../images/projectiles/level_2/crocodile_right.png")
+        bubble_image = pygame.image.load("../images/projectiles/level_2/bubble.png")
+        chicken_image = pygame.image.load("../images/projectiles/general/chicken.png")
 
         # Проверка событий
         for event in events[:]:
