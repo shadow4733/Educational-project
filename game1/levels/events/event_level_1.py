@@ -7,11 +7,13 @@ WHITE_RECT_HEIGHT = 500
 
 events = [
 
-    (2, 1, (WHITE_RECT_X + WHITE_RECT_WIDTH, WHITE_RECT_Y), "sword1_diagonal2"),
-    (2, 1, (WHITE_RECT_X, WHITE_RECT_Y), "sword1_diagonal"),
+    (2, 1, (200, 0), "sword1_diagonal"),
+    (2.2, 1, (300, 0), "sword1_diagonal"),
+    (2.4, 1, (400, 0), "sword1_diagonal"),
 
-    (4, 1, (WHITE_RECT_X + WHITE_RECT_WIDTH, WHITE_RECT_Y), "sword1_diagonal2"),
-    (4, 1, (WHITE_RECT_X, WHITE_RECT_Y), "sword1_diagonal"),
+    (4, 1, (-300, 0), "sword1_diagonal"),
+    (4.2, 1, (-200, 0), "sword1_diagonal"),
+    (4.4, 1, (-100, 0), "sword1_diagonal"),
 
     (3.4, 1, (WIDTH // 2 - 200, HEIGHT), "bubble_vertical"),
     (3.5, 1, (WIDTH // 2 - 10, HEIGHT), "bubble_vertical"),
