@@ -16,6 +16,49 @@ from game1.levels.events.event_level_3 import events
 
 pygame.init()
 
+def display_win_level(screen, font, score):
+    background = pygame.image.load("../images/bg/level_3.png")
+    background = pygame.transform.scale(background, (WIDTH, HEIGHT))
+
+    next_level_button_rect = pygame.Rect(WIDTH // 2 - 150, HEIGHT // 2 + 50, 300, 50)
+    main_menu_button_rect = pygame.Rect(WIDTH // 2 - 150, HEIGHT // 2 + 120, 300, 50)
+
+    clock = pygame.time.Clock()
+
+    while True:
+        screen.blit(background, (0, 0))
+        mouse_pos = pygame.mouse.get_pos()
+
+        # Определение цвета кнопок при наведении
+        next_level_color = GREEN if next_level_button_rect.collidepoint(mouse_pos) else WHITE
+        menu_color = GREEN if main_menu_button_rect.collidepoint(mouse_pos) else WHITE
+
+        # Рисуем кнопки
+        pygame.draw.rect(screen, next_level_color, next_level_button_rect, border_radius=10)
+        pygame.draw.rect(screen, menu_color, main_menu_button_rect, border_radius=10)
+
+        draw_text_centered(screen, "Следующий уровень", font, BLACK, next_level_button_rect.center)
+        draw_text_centered(screen, "Главное меню", font, BLACK, main_menu_button_rect.center)
+
+        # Отображаем текст "Вы победили!" в центре экрана
+        draw_text_centered(screen, "Вы победили!", font, (255, 255, 0), (WIDTH // 2, HEIGHT // 4))
+
+        pygame.display.flip()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if next_level_button_rect.collidepoint(event.pos):
+                    from game1.levels import level_4
+                    level_4.start_level()
+                elif main_menu_button_rect.collidepoint(event.pos):
+                    from game1.menu import main_menu
+                    main_menu.main()
+
+        clock.tick(60)
+
 def draw_text_centered(surface, text, font, color, center):
     """Отрисовка текста по центру"""
     text_surface = font.render(text, True, color)
@@ -275,6 +318,10 @@ def start_level():
         if score_timer >= 60:
             score_timer = 0
             score += 10
+
+        if score >= 600:
+            display_win_level(SCREEN, font, score)
+            break
 
         # Отрисовка игрока и снарядов
         play_sprites.update()
