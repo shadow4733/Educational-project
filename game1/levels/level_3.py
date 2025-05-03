@@ -110,10 +110,10 @@ def display_game_over_screen(screen, font):
 def start_level():
     """Уровень 3"""
     pygame.display.set_caption("Уровень 3")
-
     font = pygame.font.Font(None, 36)
+    background = pygame.image.load("../images/bg/level_3.png")  # Загружаем фон
+    background = pygame.transform.scale(background, (WIDTH, HEIGHT))  # Масштабируем под размер окна
 
-    SCREEN.fill(BLACK)
 
     # Загрузка фонового изображения
     #background = pygame.image.load("../images/bg/menu_background_3.png")
@@ -152,6 +152,7 @@ def start_level():
     # Игровой цикл
     waiting = True
     while waiting:
+        SCREEN.blit(background, (0, 0))
         #SCREEN.blit(background, (0, 0))  # Устанавливаем фон
 
         current_time = (pygame.time.get_ticks() - start_time) / 1000  # Время в секундах
@@ -300,7 +301,6 @@ def start_level():
                 projectile.kill()
 
          # Обновление экрана
-        SCREEN.fill(BLACK)  # Перерисовываем экран
         SCREEN.blit(level_text, level_text_rect)  # Отображаем текст уровня снова
 
         # Отображение текстовых элементов
@@ -331,6 +331,42 @@ def start_level():
         projectiles.draw(SCREEN)
         running = True
         # Проверка коллизий
+        for projectile in projectiles.sprites():
+            if (projectile.rect.bottom < 0 or projectile.rect.top > HEIGHT or
+                    projectile.rect.right < 0 or projectile.rect.left > WIDTH):
+                projectile.kill()
+
+        # Обновление экрана
+        SCREEN.blit(level_text, level_text_rect)  # Отображаем текст уровня снова
+
+        # Отображение текстовых элементов
+        SCREEN.blit(level_text, level_text_rect)
+        pygame.draw.rect(SCREEN, WHITE, (WIDTH // 2 - 250, HEIGHT // 2, 500, 500), 5)
+
+        health_text = font.render(f"Здоровье: {health}", True, WHITE)
+        SCREEN.blit(health_text, (60, 120))
+
+        score_text = font.render(f"Очки: {score}", True, WHITE)
+        SCREEN.blit(score_text, (WIDTH - 160, 120))
+
+        # Таймер начисления очков
+        score_timer += 1
+        if score_timer >= 60:
+            score_timer = 0
+            score += 10
+
+        if score > 600:
+            display_win_level(SCREEN, font, score)
+            break
+
+        # Отрисовка игрока и снарядов
+        play_sprites.update()
+        play_sprites.draw(SCREEN)
+
+        projectiles.update()
+        projectiles.draw(SCREEN)
+        running = True
+        # Проверка коллизий
         for projectile in projectiles:
             if projectile.rect.colliderect(player.rect):
                 attack_type = projectile.__class__.__name__.lower()
@@ -344,14 +380,10 @@ def start_level():
                     pygame.mixer.music.load("sounds/death.mp3")
                     pygame.mixer.music.play(-1)
                     pygame.mixer.music.set_volume(0.2)
-                    #print("игра закончена")
-                    player_health_on_death = health
-                    player_score_on_death = score
+                    # print("игра закончена")
                     display_game_over_screen(SCREEN, font)
                     running = False  # Прерываем игровой цикл.
                     break  # Важно!
-
-
 
         pygame.display.flip()
         clock.tick(FPS)
