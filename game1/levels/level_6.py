@@ -9,8 +9,99 @@ from game1.levels.attack import sword1_vertical, sword1_horizontal_left, dragon_
     dragon1_diagonal, chicken_diagonal2, chicken_diagonal, sword2_diagonal, sword2_diagonal2, fireball_diagonal2, fireball_diagonal, \
     fireball_horizontal_right, sword1_horizontal_right, sword2_horizontal_right, chicken_horizontal_right, dragon_horizontal_right
 from game1.levels.events.event_level_3 import events
+from game1.levels.pyvidplayer import Video
 
 pygame.init()
+
+def display_win_level(screen, font, score):
+    background = pygame.image.load("../images/bg/level_1.png")
+    background = pygame.transform.scale(background, (WIDTH, HEIGHT))
+
+    next_level_button_rect = pygame.Rect(WIDTH // 2 - 150, HEIGHT // 2 + 50, 300, 50)
+    main_menu_button_rect = pygame.Rect(WIDTH // 2 - 150, HEIGHT // 2 + 120, 300, 50)
+
+    clock = pygame.time.Clock()
+
+    while True:
+        screen.blit(background, (0, 0))
+        mouse_pos = pygame.mouse.get_pos()
+
+        # Определение цвета кнопок при наведении
+        next_level_color = GREEN if next_level_button_rect.collidepoint(mouse_pos) else WHITE
+        menu_color = GREEN if main_menu_button_rect.collidepoint(mouse_pos) else WHITE
+
+        # Рисуем кнопки
+        pygame.draw.rect(screen, next_level_color, next_level_button_rect, border_radius=10)
+        pygame.draw.rect(screen, menu_color, main_menu_button_rect, border_radius=10)
+
+        draw_text_centered(screen, "Следующий уровень", font, BLACK, next_level_button_rect.center)
+        draw_text_centered(screen, "Главное меню", font, BLACK, main_menu_button_rect.center)
+
+        # Отображаем текст "Вы победили!" в центре экрана
+        draw_text_centered(screen, "Вы победили!", font, (255, 255, 0), (WIDTH // 2, HEIGHT // 4))
+
+        pygame.display.flip()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if next_level_button_rect.collidepoint(event.pos):
+                    from game1.levels import level_2
+                    level_2.start_level()
+                elif main_menu_button_rect.collidepoint(event.pos):
+                    from game1.menu import main_menu
+                    main_menu.main()
+
+        clock.tick(60)
+
+def draw_text_centered(surface, text, font, color, center):
+    """Отрисовка текста по центру"""
+    text_surface = font.render(text, True, color)
+    text_rect = text_surface.get_rect(center=center)
+    surface.blit(text_surface, text_rect)
+    return text_rect
+
+def display_game_over_screen(screen, font):
+    """Отображает экран 'Игра окончена' с опциями и возвращает выбранное действие"""
+    background = pygame.image.load("../images/bg/level_1.png")
+    background = pygame.transform.scale(background, (WIDTH, HEIGHT))
+
+    restart_button_rect = pygame.Rect(WIDTH // 2 - 150, HEIGHT // 2 + 50, 300, 50)
+    main_menu_button_rect = pygame.Rect(WIDTH // 2 - 150, HEIGHT // 2 + 120, 300, 50)
+
+    clock = pygame.time.Clock()
+
+    while True:
+        screen.blit(background, (0, 0))
+        mouse_pos = pygame.mouse.get_pos()
+
+        # Определение цвета кнопок при наведении
+        restart_color = GREEN if restart_button_rect.collidepoint(mouse_pos) else WHITE
+        menu_color = GREEN if main_menu_button_rect.collidepoint(mouse_pos) else WHITE
+
+        # Рисуем кнопки
+        pygame.draw.rect(screen, restart_color, restart_button_rect, border_radius=10)
+        pygame.draw.rect(screen, menu_color, main_menu_button_rect, border_radius=10)
+
+        draw_text_centered(screen, "Повторить", font, BLACK, restart_button_rect.center)
+        draw_text_centered(screen, "Главное меню", font, BLACK, main_menu_button_rect.center)
+
+        pygame.display.flip()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if restart_button_rect.collidepoint(event.pos):
+                    start_level()
+                elif main_menu_button_rect.collidepoint(event.pos):
+                    from game1.menu import main_menu
+                    main_menu.main()
+
+        clock.tick(60)
 
 
 def start_level():
@@ -206,8 +297,7 @@ def start_level():
                     projectile.rect.right < 0 or projectile.rect.left > WIDTH):
                 projectile.kill()
 
-         # Обновление экрана
-        SCREEN.fill(BLACK)  # Перерисовываем экран
+        # Обновление экрана
         SCREEN.blit(level_text, level_text_rect)  # Отображаем текст уровня снова
 
         # Отображение текстовых элементов
@@ -226,23 +316,52 @@ def start_level():
             score_timer = 0
             score += 10
 
+        if score > 600:
+            pygame.mixer.music.pause()
+            vid = Video("../video/Final scene.mp4")
+            vid.set_size((1920, 1080))
+            def intro():
+                while True:
+                    vid.draw(SCREEN, (0, 0))
+                    pygame.display.update()
+                    for event in pygame.event.get():
+                        if event.type == pygame.MOUSEBUTTONDOWN:
+                            vid.close()
+            intro()
+            display_win_level(SCREEN, font, score)
+            break
+
         # Отрисовка игрока и снарядов
         play_sprites.update()
         play_sprites.draw(SCREEN)
 
         projectiles.update()
         projectiles.draw(SCREEN)
-
+        running = True
         # Проверка коллизий
         for projectile in projectiles:
-            if projectile.rect.colliderect(player):
+            if projectile.rect.colliderect(player.rect):
                 attack_type = projectile.__class__.__name__.lower()
                 damage = get_attack_damage(attack_type)
                 health -= damage
                 player.take_damage(damage)
+                projectile.kill()
+
+                if health <= 0:
+                    pygame.mixer.music.pause()
+                    pygame.mixer.music.load("sounds/death.mp3")
+                    pygame.mixer.music.play(-1)
+                    pygame.mixer.music.set_volume(0.2)
+                    # print("игра закончена")
+                    display_game_over_screen(SCREEN, font)
+                    running = False  # Прерываем игровой цикл.
+                    break  # Важно!
 
         pygame.display.flip()
         clock.tick(FPS)
+        if not running:
+            pygame.time.delay(500)
+            display_game_over_screen(SCREEN, font, "level_6.py", score)
 
 if __name__ == "__main__":
     start_level()
