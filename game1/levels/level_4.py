@@ -2,7 +2,7 @@ import sys
 import subprocess
 
 import pygame.image
-
+from pyvidplayer import Video
 from game1.Player import Player
 from game1.constant.constnants import *
 from game1.levels.attack import sword1_vertical, sword1_horizontal_left, get_attack_damage, chicken_vertical, \

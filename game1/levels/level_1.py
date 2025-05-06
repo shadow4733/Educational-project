@@ -2,7 +2,7 @@ import sys
 import subprocess
 
 import pygame.image
-
+from pyvidplayer import Video
 from game1.Player import Player
 from game1.constant.constnants import *
 from game1.levels.attack import sword1_vertical, sword1_horizontal_left, get_attack_damage, chicken_vertical, \
@@ -310,8 +310,19 @@ def start_level():
             score_timer = 0
             score += 10
 
-        if score > 600:
-            display_win_level(SCREEN, font, score)
+        if score >= 600:
+            pygame.mixer.music.pause()
+            vid = Video("../video/cat 1-2.mp4")
+            vid.set_size((1920, 1080))
+            def intro():
+                while True:
+                    vid.draw(SCREEN, (0, 0))
+                    pygame.display.update()
+                    for event in pygame.event.get():
+                        if event.type == pygame.MOUSEBUTTONDOWN:
+                            vid.close()
+                            display_win_level(SCREEN, font, score)
+            intro()
             break
 
         # Отрисовка игрока и снарядов
