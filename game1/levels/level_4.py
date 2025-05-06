@@ -109,7 +109,7 @@ def display_game_over_screen(screen, font):
         clock.tick(60)
 
 def start_level():
-    """Уровень 1"""
+    """Уровень 4"""
     pygame.display.set_caption("Уровень 4")
     font = pygame.font.Font(None, 36)
 
