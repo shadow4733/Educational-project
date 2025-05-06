@@ -13,7 +13,7 @@ from game1.levels.attack import sword1_vertical, sword1_horizontal_left, get_att
     fireball_diagonal, fireball_diagonal2, long_sword_vertical, long_sword_horizontal_left, long_sword_horizontal_right, \
     long_sword_diagonal, long_sword_diagonal2, gas_vertical, gas_horizontal_left, gas_horizontal_right, gas_diagonal, \
     gas_diagonal2
-from game1.levels.events.event_level_1 import events
+from game1.levels.events.event_level_4 import events
 
 
 pygame.init()
@@ -146,6 +146,7 @@ def start_level():
     pygame.mixer.music.set_volume(0.2)
 
     # Игровой цикл
+    player.image = player_images_right
     waiting = True
     while waiting:
         SCREEN.blit(background, (0, 0))  # Устанавливаем фон
@@ -187,8 +188,8 @@ def start_level():
         dagger_image = pygame.image.load("../images/projectiles/level_1/dagger.png")#bubble_vertical
         gas_image = pygame.image.load("../images/projectiles/level_1/gas.png")#gas
         long_sword = pygame.image.load("../images/projectiles/general/long_sword.png")#long_sword
-        sword1_image = pygame.image.load("../images/projectiles/general/sword1.png")#sword1
-        sword2_image = pygame.image.load("../images/projectiles/level_1/sword2.png")#sword2
+        sword1_image = pygame.image.load("../images/projectiles/level_4/mechBOGDAN.png")#sword1
+        sword2_image = pygame.image.load("../images/projectiles/level_4/kopBOGDAN.png")#sword2
 
         # Проверка событий
         for event in events[:]:
@@ -197,19 +198,19 @@ def start_level():
                 for _ in range(num_swords):
 
                     if direction == "sword1_vertical":
-                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 180)
+                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 90   )
                         projectile_temp = sword1_vertical(rotated_sword1)
                     elif direction == "sword1_diagonal":
-                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), -135)
+                        rotated_sword1 = pygame.transform.rotate(sword2_image.copy(), 135)
                         projectile_temp = sword1_diagonal(rotated_sword1)
                     elif direction == "sword1_diagonal2":
-                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 135)
+                        rotated_sword1 = pygame.transform.rotate(sword2_image.copy(), 45)
                         projectile_temp = sword1_diagonal2(rotated_sword1)
                     elif direction == "sword1_horizontal_left":
-                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 270)
+                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 180)
                         projectile_temp = sword1_horizontal_left(rotated_sword1)
                     elif direction == "sword1_horizontal_right":
-                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 90)
+                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 0)
                         projectile_temp = sword1_horizontal_right(rotated_sword1)
 
                     elif direction == "bubble_vertical":
