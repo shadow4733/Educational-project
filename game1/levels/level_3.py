@@ -111,15 +111,10 @@ def start_level():
     """Уровень 3"""
     pygame.display.set_caption("Уровень 3")
     font = pygame.font.Font(None, 36)
+
     background = pygame.image.load("../images/bg/level_3.png")  # Загружаем фон
     background = pygame.transform.scale(background, (WIDTH, HEIGHT))  # Масштабируем под размер окна
 
-
-    # Загрузка фонового изображения
-    #background = pygame.image.load("../images/bg/menu_background_3.png")
-    #background = pygame.transform.scale(background, (WIDTH, HEIGHT))
-
-    # Отображение текста
     level_text = font.render("Уровень 3", True, WHITE)
     level_text_rect = level_text.get_rect(center=(WIDTH // 2, HEIGHT - 950))
 
@@ -152,8 +147,7 @@ def start_level():
     # Игровой цикл
     waiting = True
     while waiting:
-        SCREEN.blit(background, (0, 0))
-        #SCREEN.blit(background, (0, 0))  # Устанавливаем фон
+        SCREEN.blit(background, (0, 0))  # Устанавливаем фон
 
         current_time = (pygame.time.get_ticks() - start_time) / 1000  # Время в секундах
 
@@ -167,8 +161,10 @@ def start_level():
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] or keys[pygame.K_a]:
+            player.image = player_images_left
             player.rect.centerx -= 5
         if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
+            player.image = player_images_right
             player.rect.centerx += 5
         if keys[pygame.K_UP] or keys[pygame.K_w]:
             player.rect.centery -= 5
@@ -184,8 +180,6 @@ def start_level():
             player.rect.centery = HEIGHT // 2 + 5 + HERO_SIZE // 2
         elif player.rect.centery + HERO_SIZE // 2 > HEIGHT // 2 + 495:
             player.rect.centery = HEIGHT // 2 + 495 - HERO_SIZE // 2
-
-
 
         # Загружаем изображения проджектайлов
         sword1_image = pygame.image.load("../images/projectiles/general/sword1.png")
