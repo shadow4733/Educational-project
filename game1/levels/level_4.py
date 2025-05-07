@@ -186,8 +186,7 @@ def start_level():
         # Загружаем изображения проджектайлов
         chicken_image = pygame.image.load("../images/projectiles/general/chicken.png")#chicken
         dagger_image = pygame.image.load("../images/projectiles/level_1/dagger.png")#bubble_vertical
-        gas_image = pygame.image.load("../images/projectiles/level_1/gas.png")#gas
-        long_sword = pygame.image.load("../images/projectiles/general/long_sword.png")#long_sword
+        arrow = pygame.image.load("../images/projectiles/general/arrow.png")#arrow
         sword1_image = pygame.image.load("../images/projectiles/level_4/mechBOGDAN.png")#sword1
         sword2_image = pygame.image.load("../images/projectiles/level_4/kopBOGDAN.png")#sword2
 
@@ -198,7 +197,7 @@ def start_level():
                 for _ in range(num_swords):
 
                     if direction == "sword1_vertical":
-                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 90   )
+                        rotated_sword1 = pygame.transform.rotate(arrow.copy(), 225   )
                         projectile_temp = sword1_vertical(rotated_sword1)
                     elif direction == "sword1_diagonal":
                         rotated_sword1 = pygame.transform.rotate(sword2_image.copy(), 135)
@@ -232,38 +231,6 @@ def start_level():
                     elif direction == "chicken_diagonal2":
                         rotated_chicken = pygame.transform.rotate(chicken_image.copy(), 135)
                         projectile_temp = chicken_diagonal2(rotated_chicken)
-
-                    elif direction == "gas_vertical":
-                        rotated_chicken = pygame.transform.rotate(gas_image.copy(), 90)
-                        projectile_temp = gas_vertical(rotated_chicken)
-                    elif direction == "gas_horizontal":
-                        rotated_chicken = pygame.transform.rotate(gas_image.copy(), 180)
-                        projectile_temp = gas_horizontal_left(rotated_chicken)
-                    elif direction == "gas_horizontal_right":
-                        rotated_chicken = pygame.transform.rotate(gas_image.copy(), 135)
-                        projectile_temp = gas_horizontal_right(rotated_chicken)
-                    elif direction == "gas_diagonal":
-                        rotated_chicken = pygame.transform.rotate(gas_image.copy(), -135)
-                        projectile_temp = gas_diagonal(rotated_chicken)
-                    elif direction == "gas_diagonal2":
-                        rotated_chicken = pygame.transform.rotate(gas_image.copy(), 135)
-                        projectile_temp = gas_diagonal2(rotated_chicken)
-
-                    elif direction == "long_sword_vertical":
-                        rotated_chicken = pygame.transform.rotate(long_sword.copy(), 90)
-                        projectile_temp = long_sword_vertical(rotated_chicken)
-                    elif direction == "long_sword_horizontal":
-                        rotated_chicken = pygame.transform.rotate(long_sword.copy(), 180)
-                        projectile_temp = long_sword_horizontal_left(rotated_chicken)
-                    elif direction == "long_sword_horizontal_right":
-                        rotated_chicken = pygame.transform.rotate(long_sword.copy(), 135)
-                        projectile_temp = long_sword_horizontal_right(rotated_chicken)
-                    elif direction == "long_sword_diagonal":
-                        rotated_chicken = pygame.transform.rotate(long_sword.copy(), -135)
-                        projectile_temp = long_sword_diagonal(rotated_chicken)
-                    elif direction == "long_sword_diagonal2":
-                        rotated_chicken = pygame.transform.rotate(long_sword.copy(), 135)
-                        projectile_temp = long_sword_diagonal2(rotated_chicken)
 
                     elif direction == "sword2_vertical":
                         rotated_sword2 = pygame.transform.rotate(sword2_image.copy(), 180)
