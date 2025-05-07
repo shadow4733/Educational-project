@@ -145,6 +145,7 @@ def start_level():
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.2)
 
+    player.image = player_images_right
     # Игровой цикл
     waiting = True
     while waiting:
@@ -310,7 +311,7 @@ def start_level():
             score_timer = 0
             score += 10
 
-        if score >= 600:
+        if score >= 450:
             pygame.mixer.music.pause()
             vid = Video("../video/cat 1-2.mp4")
             vid.set_size((1920, 1080))

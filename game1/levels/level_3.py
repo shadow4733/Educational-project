@@ -144,6 +144,7 @@ def start_level():
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.2)
 
+    player.image = player_images_right
     # Игровой цикл
     waiting = True
     while waiting:

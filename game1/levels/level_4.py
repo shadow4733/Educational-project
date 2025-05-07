@@ -311,7 +311,7 @@ def start_level():
             score_timer = 0
             score += 10
 
-        if score > 600:
+        if score > 450:
             display_win_level(SCREEN, font, score)
             break
 
