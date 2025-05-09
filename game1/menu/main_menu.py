@@ -79,7 +79,7 @@ def main():
         elif menu_state == "game":
             if selected_level == "Уровень 1":
                 pygame.mixer.music.pause()
-                vid = Video("../video/startvideo.mp4")
+                vid = Video("../video/start-scene.mp4")
                 vid.set_size((1920, 1080))
 
                 def intro():
