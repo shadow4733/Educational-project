@@ -7,10 +7,8 @@ from game1.Player import Player
 from game1.constant.constnants import *
 from game1.levels.attack import sword1_vertical, sword1_horizontal_left, get_attack_damage, chicken_vertical, \
     chicken_horizontal, chicken_diagonal2, chicken_diagonal, sword1_horizontal_right, chicken_horizontal_right, \
-    bubble_vertical, sword1_diagonal, sword1_diagonal2, dragon_vertical, dragon_horizontal, dragon_horizontal_right, \
-    dragon1_diagonal, dragon1_diagonal2, sword2_vertical, sword2_horizontal_left, sword2_horizontal_right, \
-    sword2_diagonal, sword2_diagonal2, fireball_vertical, fireball_horizontal, fireball_horizontal_right, \
-    fireball_diagonal, fireball_diagonal2, long_sword_vertical, long_sword_horizontal_left, long_sword_horizontal_right, \
+    bubble_vertical, sword1_diagonal, sword1_diagonal2, sword2_vertical, sword2_horizontal_left, sword2_horizontal_right, \
+    sword2_diagonal, sword2_diagonal2, long_sword_vertical, long_sword_horizontal_left, long_sword_horizontal_right, \
     long_sword_diagonal, long_sword_diagonal2, gas_vertical, gas_horizontal_left, gas_horizontal_right, gas_diagonal, \
     gas_diagonal2
 from game1.levels.events.event_level_1 import events
