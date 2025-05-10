@@ -183,13 +183,12 @@ def start_level():
         elif player.rect.centery + HERO_SIZE // 2 > HEIGHT // 2 + 495:
             player.rect.centery = HEIGHT // 2 + 495 - HERO_SIZE // 2
 
-        # Загружаем изображения проджектайлов
-        chicken_image = pygame.image.load("../images/projectiles/general/chicken.png")#chicken
-        gas_image = pygame.image.load("../images/projectiles/level_5/ball.png")#gas=ball
-        arrow_image = pygame.image.load("../images/projectiles/general/arrow.png")#arrow
-        stone_image = pygame.image.load("../images/projectiles/level_5/stone.png")#long_sword=stone
-        sword1_image = pygame.image.load("../images/projectiles/level_4/mechBOGDAN.png")#sword1
-        sword2_image = pygame.image.load("../images/projectiles/level_4/kopBOGDAN.png")#sword2
+        chicken_image = pygame.image.load("../images/projectiles/general/chicken.png")
+        gas_image = pygame.image.load("../images/projectiles/level_5/ball.png")
+        arrow_image = pygame.image.load("../images/projectiles/general/arrow.png")
+        stone_image = pygame.image.load("../images/projectiles/level_5/stone.png")
+        sword2_image = pygame.image.load("../images/projectiles/level_5/dragon_right.png")
+        dragon_image = pygame.image.load("../images/projectiles/level_5/dragon_left.png")
 
         # Проверка событий
         for event in events[:]:
@@ -201,22 +200,6 @@ def start_level():
                         rotated_sword1 = pygame.transform.rotate(arrow_image.copy(), 225)
                         projectile_temp = sword1_vertical(rotated_sword1)
 
-                    elif direction == "sword1_vertical":
-                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 225)
-                        projectile_temp = sword1_vertical(rotated_sword1)
-                    elif direction == "sword1_diagonal":
-                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 135)
-                        projectile_temp = sword1_diagonal(rotated_sword1)
-                    elif direction == "sword1_diagonal2":
-                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 45)
-                        projectile_temp = sword1_diagonal2(rotated_sword1)
-                    elif direction == "sword1_horizontal_left":
-                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 180)
-                        projectile_temp = sword1_horizontal_left(rotated_sword1)
-                    elif direction == "sword1_horizontal_right":
-                        rotated_sword1 = pygame.transform.rotate(sword1_image.copy(), 0)
-                        projectile_temp = sword1_horizontal_right(rotated_sword1)
-
                     elif direction == "sword2_vertical":
                         rotated_sword1 = pygame.transform.rotate(sword2_image.copy(), 225)
                         projectile_temp = sword2_vertical(rotated_sword1)
@@ -227,7 +210,7 @@ def start_level():
                         rotated_sword1 = pygame.transform.rotate(sword2_image.copy(), 45)
                         projectile_temp = sword2_diagonal2(rotated_sword1)
                     elif direction == "sword2_horizontal_left":
-                        rotated_sword1 = pygame.transform.rotate(sword2_image.copy(), 180)
+                        rotated_sword1 = pygame.transform.rotate(dragon_image.copy(), 0)
                         projectile_temp = sword2_horizontal_left(rotated_sword1)
                     elif direction == "sword2_horizontal_right":
                         rotated_sword1 = pygame.transform.rotate(sword2_image.copy(), 0)
@@ -259,20 +242,20 @@ def start_level():
                         rotated_sword1 = pygame.transform.rotate(stone_image.copy(), 45)
                         projectile_temp = long_sword_diagonal2(rotated_sword1)
                     elif direction == "stone_horizontal_left":
-                        rotated_sword1 = pygame.transform.rotate(stone_image.copy(), 180)
+                        rotated_sword1 = pygame.transform.rotate(stone_image.copy(), 0)
                         projectile_temp = long_sword_horizontal_left(rotated_sword1)
                     elif direction == "stone_horizontal_right":
                         rotated_sword1 = pygame.transform.rotate(stone_image.copy(), 0)
                         projectile_temp = long_sword_horizontal_right(rotated_sword1)
 
                     elif direction == "chicken_vertical":
-                        rotated_chicken = pygame.transform.rotate(chicken_image.copy(), 180)
+                        rotated_chicken = pygame.transform.rotate(chicken_image.copy(), 270)
                         projectile_temp = chicken_vertical(rotated_chicken)
                     elif direction == "chicken_horizontal":
                         rotated_chicken = pygame.transform.rotate(chicken_image.copy(), 0)
                         projectile_temp = chicken_horizontal(rotated_chicken)
                     elif direction == "chicken_horizontal_right":
-                        rotated_chicken = pygame.transform.rotate(chicken_image.copy(), 135)
+                        rotated_chicken = pygame.transform.rotate(chicken_image.copy(), 180)
                         projectile_temp = chicken_horizontal_right(rotated_chicken)
                     elif direction == "chicken_diagonal":
                         rotated_chicken = pygame.transform.rotate(chicken_image.copy(), -135)
@@ -311,7 +294,7 @@ def start_level():
             score_timer = 0
             score += 10
 
-        if score > 600:
+        if score > 450:
             display_win_level(SCREEN, font, score)
             break
 
@@ -336,7 +319,6 @@ def start_level():
                     pygame.mixer.music.load("sounds/death.mp3")
                     pygame.mixer.music.play(-1)
                     pygame.mixer.music.set_volume(0.2)
-                    #print("игра закончена")
                     display_game_over_screen(SCREEN, font)
                     running = False  # Прерываем игровой цикл.
                     break  # Важно!
