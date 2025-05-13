@@ -49,7 +49,6 @@ ATTACK_DAMAGE = {
 }
 
 def get_attack_damage(attack_type):
-    """Получить урон для определенного типа атаки"""
     return ATTACK_DAMAGE.get(attack_type, 0)
 
 # Спрайт для вертикально летящих мечей
@@ -58,7 +57,7 @@ class sword1_vertical(pygame.sprite.Sprite):
         super().__init__()
         self.image = image  # Используем переданное изображение
         self.rect = self.image.get_rect()
-        self.speedy = 12
+        self.speedy = 8
 
     def update(self):
         self.rect.y += self.speedy
@@ -84,7 +83,7 @@ class sword1_horizontal_left(pygame.sprite.Sprite):
         super().__init__()
         self.image = image  # Используем переданное изображение
         self.rect = self.image.get_rect()
-        self.speedx = 12  # Скорость движения по оси x
+        self.speedx = 8  # Скорость движения по оси x
 
     def update(self):
         # Обновляем позицию объекта, двигаясь по оси x
@@ -96,7 +95,7 @@ class sword1_horizontal_right(pygame.sprite.Sprite):
         super().__init__()
         self.image = image  # Используем переданное изображение
         self.rect = self.image.get_rect()
-        self.speedx = 12  # Скорость движения по оси x
+        self.speedx = 8  # Скорость движения по оси x
 
     def update(self):
         # Обновляем позицию объекта, двигаясь по оси x
@@ -141,7 +140,7 @@ class dragon_vertical(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(700, 1200)
         self.rect.y = random.randrange(-200, -70)
-        self.speedy = 12
+        self.speedy = 10
 
     def reset_position(self):
         self.rect.x = random.randrange(500, 1400)
@@ -161,7 +160,7 @@ class dragon_horizontal(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(-200, -70)
         self.rect.y = random.randrange(500, 1000)
-        self.speedx = 12  # Скорость движения по оси x
+        self.speedx = 10  # Скорость движения по оси x
 
     def reset_position(self):
         self.rect.x = random.randrange(-200, -70)
@@ -179,7 +178,7 @@ class dragon_horizontal_right(pygame.sprite.Sprite):
         super().__init__()
         self.image = image  # Используем переданное изображение
         self.rect = self.image.get_rect()
-        self.speedx = 12  # Скорость движения по оси x
+        self.speedx = 10  # Скорость движения по оси x
 
     def update(self):
         # Обновляем позицию объекта, двигаясь по оси x
@@ -192,8 +191,8 @@ class dragon1_diagonal(pygame.sprite.Sprite):
         super().__init__()
         self.image = image  # Используем переданное изображение
         self.rect = self.image.get_rect()
-        self.speedy = 9  # Скорость по вертикали
-        self.speedx = 9  # Скорость по горизонтали (добавлено)
+        self.speedy = 7  # Скорость по вертикали
+        self.speedx = 7  # Скорость по горизонтали (добавлено)
         self.rect.center = (WIDTH // 2 - 250, HEIGHT // 2)  # начальная позиция, можно задавать тут
 
     def update(self):
@@ -207,8 +206,8 @@ class dragon1_diagonal2(pygame.sprite.Sprite):
         super().__init__()
         self.image = image  # Используем переданное изображение
         self.rect = self.image.get_rect()
-        self.speedy = 9
-        self.speedx = -9
+        self.speedy = 7
+        self.speedx = -7
         self.rect.center = (WIDTH // 2 - 250, HEIGHT // 2)  # начальная позиция, можно задавать тут
 
     def update(self):
@@ -308,7 +307,7 @@ class sword2_vertical(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(700, 1200)
         self.rect.y = random.randrange(-200, -70)
-        self.speedy = 12
+        self.speedy = 9
 
     def reset_position(self):
         self.rect.x = random.randrange(500, 1400)
@@ -328,7 +327,7 @@ class sword2_horizontal_left(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(-200, -70)
         self.rect.y = random.randrange(500, 1000)
-        self.speedx = 12  # Скорость движения по оси x
+        self.speedx = 9  # Скорость движения по оси x
 
     def reset_position(self):
         self.rect.x = random.randrange(-200, -70)
@@ -346,7 +345,7 @@ class sword2_horizontal_right(pygame.sprite.Sprite):
         super().__init__()
         self.image = image  # Используем переданное изображение
         self.rect = self.image.get_rect()
-        self.speedx = 12  # Скорость движения по оси x
+        self.speedx = 9  # Скорость движения по оси x
 
     def update(self):
         # Обновляем позицию объекта, двигаясь по оси x
@@ -358,8 +357,8 @@ class sword2_diagonal(pygame.sprite.Sprite):
         super().__init__()
         self.image = image  # Используем переданное изображение
         self.rect = self.image.get_rect()
-        self.speedy = 9  # Скорость по вертикали
-        self.speedx = 9  # Скорость по горизонтали (добавлено)
+        self.speedy = 8  # Скорость по вертикали
+        self.speedx = 8  # Скорость по горизонтали (добавлено)
         self.rect.center = (WIDTH // 2 - 250, HEIGHT // 2)  # начальная позиция, можно задавать тут
 
     def update(self):
@@ -373,8 +372,8 @@ class sword2_diagonal2(pygame.sprite.Sprite):
         super().__init__()
         self.image = image  # Используем переданное изображение
         self.rect = self.image.get_rect()
-        self.speedy = 9
-        self.speedx = -9
+        self.speedy = 8
+        self.speedx = -8
         self.rect.center = (WIDTH // 2 - 250, HEIGHT // 2)  # начальная позиция, можно задавать тут
 
     def update(self):
@@ -392,7 +391,7 @@ class fireball_vertical(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(700, 1200)
         self.rect.y = random.randrange(-200, -70)
-        self.speedy = 12
+        self.speedy = 8
 
     def reset_position(self):
         self.rect.x = random.randrange(500, 1400)
@@ -412,7 +411,7 @@ class fireball_horizontal(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(-200, -70)
         self.rect.y = random.randrange(500, 1000)
-        self.speedx = 12  # Скорость движения по оси x
+        self.speedx = 8  # Скорость движения по оси x
 
     def reset_position(self):
         self.rect.x = random.randrange(-200, -70)
@@ -430,7 +429,7 @@ class fireball_horizontal_right(pygame.sprite.Sprite):
         super().__init__()
         self.image = image  # Используем переданное изображение
         self.rect = self.image.get_rect()
-        self.speedx = 12  # Скорость движения по оси x
+        self.speedx = 8  # Скорость движения по оси x
 
     def update(self):
         # Обновляем позицию объекта, двигаясь по оси x
@@ -443,8 +442,8 @@ class fireball_diagonal(pygame.sprite.Sprite):
         super().__init__()
         self.image = image  # Используем переданное изображение
         self.rect = self.image.get_rect()
-        self.speedy = 9  # Скорость по вертикали
-        self.speedx = 9  # Скорость по горизонтали (добавлено)
+        self.speedy = 8  # Скорость по вертикали
+        self.speedx = 8  # Скорость по горизонтали (добавлено)
         self.rect.center = (WIDTH // 2 - 250, HEIGHT // 2)  # начальная позиция, можно задавать тут
 
     def update(self):
@@ -458,8 +457,8 @@ class fireball_diagonal2(pygame.sprite.Sprite):
         super().__init__()
         self.image = image  # Используем переданное изображение
         self.rect = self.image.get_rect()
-        self.speedy = 9
-        self.speedx = -9
+        self.speedy = 8
+        self.speedx = -8
         self.rect.center = (WIDTH // 2 - 250, HEIGHT // 2)  # начальная позиция, можно задавать тут
 
     def update(self):
