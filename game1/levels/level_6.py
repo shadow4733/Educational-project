@@ -13,7 +13,7 @@ from game1.levels.attack import sword1_vertical, sword1_horizontal_left, get_att
     fireball_diagonal, fireball_diagonal2, long_sword_vertical, long_sword_horizontal_left, long_sword_horizontal_right, \
     long_sword_diagonal, long_sword_diagonal2, gas_vertical, gas_horizontal_left, gas_horizontal_right, gas_diagonal, \
     gas_diagonal2
-from game1.levels.events.event_level_5 import events
+from game1.levels.events.event_level_6 import events
 
 
 pygame.init()
@@ -249,7 +249,7 @@ def start_level():
                         projectile_temp = long_sword_horizontal_right(rotated_sword1)
 
                     elif direction == "golden_sword_king_vertical":
-                        rotated_sword1 = pygame.transform.rotate(golden_sword_king.copy(), 225)
+                        rotated_sword1 = pygame.transform.rotate(golden_sword_king.copy(), 90)
                         projectile_temp = sword2_vertical(rotated_sword1)
                     elif direction == "golden_sword_king_diagonal":
                         rotated_sword1 = pygame.transform.rotate(golden_sword_king.copy(), 135)
@@ -258,7 +258,7 @@ def start_level():
                         rotated_sword1 = pygame.transform.rotate(golden_sword_king.copy(), 45)
                         projectile_temp = sword2_diagonal2(rotated_sword1)
                     elif direction == "golden_sword_king_horizontal_left":
-                        rotated_sword1 = pygame.transform.rotate(golden_sword_king.copy(), 0)
+                        rotated_sword1 = pygame.transform.rotate(golden_sword_king.copy(), 180)
                         projectile_temp = sword2_horizontal_left(rotated_sword1)
                     elif direction == "golden_sword_king_horizontal_right":
                         rotated_sword1 = pygame.transform.rotate(golden_sword_king.copy(), 0)
