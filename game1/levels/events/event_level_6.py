@@ -55,16 +55,6 @@ events = [
     (12, 1, (0, HEIGHT // 2 - 100), "gas_horizontal_left"),
     (12, 1, (0, HEIGHT // 2 + 200), "gas_horizontal_left"),
 
-    (14, 1, (WIDTH, HEIGHT // 2 + 400), "gas_horizontal_right"),
-    (14.5, 1, (WIDTH, HEIGHT // 2 + 300), "gas_horizontal_right"),
-    (15, 1, (WIDTH, HEIGHT // 2 + 200), "gas_horizontal_right"),
-    (15.5, 1, (WIDTH, HEIGHT // 2 + 100), "gas_horizontal_right"),
-    (16, 1, (0, HEIGHT // 2 + 400), "gas_horizontal_left"),
-    (16.5, 1, (0, HEIGHT // 2 + 300), "gas_horizontal_left"),
-    (17, 1, (0, HEIGHT // 2 + 200), "gas_horizontal_left"),
-    (17.5, 1, (0, HEIGHT // 2 + 100), "gas_horizontal_left"),
-    (18, 1, (0, HEIGHT // 2 ), "gas_horizontal_left"),
-
     (14, 1, (WIDTH, HEIGHT // 2 + 450), "gas_horizontal_right"),
     (14, 1, (WIDTH, HEIGHT // 2 + 350), "gas_horizontal_right"),
     (14.5, 1, (WIDTH, HEIGHT // 2 + 250), "gas_horizontal_right"),
@@ -140,7 +130,7 @@ events = [
     (28, 1, (0, HEIGHT // 2 + 150), "sword2_horizontal_left"),
     (28, 1, (0, HEIGHT // 2 + 50), "sword2_horizontal_left"),
 
-    
+
 
 
 #     (8, 1, (WIDTH // 2 - 230, 0), "sword1_vertical"),
