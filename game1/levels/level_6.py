@@ -141,7 +141,7 @@ def start_level():
 
     pygame.display.flip()
 
-    pygame.mixer.music.load('sounds/MM 8 bit 2.mp3')
+    pygame.mixer.music.load('../menu/sounds/level 6.mp3')
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.2)
 
