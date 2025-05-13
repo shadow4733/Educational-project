@@ -346,7 +346,7 @@ def start_level():
             score_timer = 0
             score += 10
 
-        if score >= 700:
+        if score >= 450:
             pygame.mixer.music.pause()
             vid = Video("../video/cat 3-4.mp4")
             vid.set_size((1920, 1080))
