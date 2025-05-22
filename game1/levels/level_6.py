@@ -311,7 +311,20 @@ def start_level():
             score += 10
 
         if score > 450:
-            display_win_level(SCREEN, font, score)
+            pygame.mixer.music.pause()
+            vid = Video("../video/Final Scene 2.mp4")
+            vid.set_size((1920, 1080))
+
+            def intro():
+                while True:
+                    vid.draw(SCREEN, (0, 0))
+                    pygame.display.update()
+                    for event in pygame.event.get():
+                        if event.type == pygame.MOUSEBUTTONDOWN:
+                            vid.close()
+                            display_win_level(SCREEN, font, score)
+
+            intro()
             break
 
         # Отрисовка игрока и снарядов

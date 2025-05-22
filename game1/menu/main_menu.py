@@ -140,11 +140,35 @@ def main():
 
             elif selected_level == "Уровень 5":
                 pygame.mixer.music.pause()
-                level_5.start_level()
+                vid = Video("../video/cat 4-5.mp4")
+                vid.set_size((1920, 1080))
+
+                def intro():
+                    while True:
+                        vid.draw(SCREEN, (0, 0))
+                        pygame.display.update()
+                        for event in pygame.event.get():
+                            if event.type == pygame.MOUSEBUTTONDOWN:
+                                vid.close()
+                                level_5.start_level()
+
+                intro()
 
             elif selected_level == "Уровень 6":
                 pygame.mixer.music.pause()
-                level_6.start_level()
+                vid = Video("../video/cat 5-6.mp4")
+                vid.set_size((1920, 1080))
+
+                def intro():
+                    while True:
+                        vid.draw(SCREEN, (0, 0))
+                        pygame.display.update()
+                        for event in pygame.event.get():
+                            if event.type == pygame.MOUSEBUTTONDOWN:
+                                vid.close()
+                                level_6.start_level()
+
+                intro()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:  # Обработка выхода из игры
