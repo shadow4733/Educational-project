@@ -189,9 +189,6 @@ def main():
                             elif i == 1:
                                 menu_state = "levels"  # Переход к выбору уровня
                             elif i == 2:
-                                print("Открыть настройки")
-
-                            elif i == 3:
                                 pygame.quit()
                                 sys.exit()
                 elif menu_state == "levels":
