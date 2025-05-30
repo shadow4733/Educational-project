@@ -183,11 +183,14 @@ def main():
                     for i, rect in enumerate(button_rects):
                         if rect.collidepoint(x, y):  # Проверка, попал ли клик в кнопку
                             if i == 0:
+                                selected_level = "Уровень 1"
+                                menu_state = "game"
                                 print("Игра начинается заново")
                             elif i == 1:
                                 menu_state = "levels"  # Переход к выбору уровня
                             elif i == 2:
                                 print("Открыть настройки")
+
                             elif i == 3:
                                 pygame.quit()
                                 sys.exit()
